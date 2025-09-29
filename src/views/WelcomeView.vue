@@ -1,6 +1,8 @@
 <template>
     <Welcome message="Bienvenida, Doctora"/>
-    <img alt="logo Dra. Cecilia Diaz" src="../assets/logoDra.png">
+    <div class="d-flex justify-content-center">
+        <img height="250vh" alt="logo Dra. Cecilia Diaz" src="../assets/logoDra.png">
+    </div>
 </template>
 
 <script>
