@@ -1,6 +1,7 @@
 <template>
   <nav>
     <router-link to="/">Welcome</router-link> |
+    <router-link to="/registrar">Registrar</router-link> |
   </nav>
   <router-view/>
 </template>
@@ -20,10 +21,14 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #737d88;
+}
+
+p {
+  color: #737d88;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #f7bad9;
 }
 </style>
