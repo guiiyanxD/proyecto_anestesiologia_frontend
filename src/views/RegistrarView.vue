@@ -1,3 +1,4 @@
+
 <template>
     <div class="container">
         <div class="row">
@@ -32,18 +33,31 @@
                                             <label for="inputPassword4">Password</label>
                                         </div>
                                     </div>
-                                    
                                 </form>
                             </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <Vueform>
+                <TextElement name="hello_world" label="Hello" placeholder="World" />
+                <TextElement input-type="password" />
+                <TextElement input-type="date" />
+                <TextElement input-type="number"  />
+            </Vueform>
+        </div>
+
     </div>
 </template>
 
 <script>
+
+
     export default {
-        name: 'RegistrarView'
+        name: 'RegistrarView',
+        
+
     }
 </script>
