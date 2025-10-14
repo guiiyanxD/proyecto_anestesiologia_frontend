@@ -1,0 +1,1612 @@
+<template>
+  <Vueform
+    size="md"
+    :display-errors="false"
+  >
+    <template #empty>
+      <FormSteps>
+        <FormStep
+          name="page0"
+          label="Details"
+          :elements="[
+            'h2',
+            'divider',
+            'accommodation_type',
+            'advert_elsewhere',
+            'import',
+            'accommodation_name',
+            'divider_1',
+          ]"
+          :buttons="{
+            previous: false,
+          }"
+        />
+        <FormStep
+          name="page1"
+          label="Location"
+          :elements="[
+            'h2_1',
+            'divider_2',
+            'location',
+            'divider_3',
+          ]"
+        />
+        <FormStep
+          name="page2"
+          label="Rooms"
+          :elements="[
+            'h2_2',
+            'divider_4',
+            'guests_count',
+            'bathroom_count',
+            'size',
+            'h2_3',
+            'divider_5',
+            'rooms',
+            'divider_6',
+          ]"
+        />
+        <FormStep
+          name="page3"
+          label="Equipment & facilities"
+          :elements="[
+            'h2_4',
+            'divider_7',
+            'equipment',
+            'divider_8',
+          ]"
+        />
+        <FormStep
+          name="page4"
+          label="Breakfast"
+          :elements="[
+            'h2_5',
+            'divider_9',
+            'serve_breakfast',
+            'breakfast_in_price',
+            'breakfast_price',
+            'breakfast_types',
+            'divider_10',
+          ]"
+        />
+        <FormStep
+          name="page5"
+          label="Parking"
+          :elements="[
+            'h2_6',
+            'divider_11',
+            'parking',
+            'parking_price',
+            'parking_interval',
+            'parking_reservation',
+            'parking_location',
+            'parking_location_offsite_description',
+            'parking_type',
+            'divider_12',
+          ]"
+        />
+        <FormStep
+          name="page6"
+          label="Languages"
+          :elements="[
+            'h2_7',
+            'divider_13',
+            'languages',
+            'divider_14',
+          ]"
+        />
+        <FormStep
+          name="page7"
+          label="House rules"
+          :elements="[
+            'h2_8',
+            'divider_15',
+            'rules',
+            'check_in_from',
+            'check_in_until',
+            'p_1',
+            'check_out_from',
+            'check_out_until',
+            'divider_16',
+          ]"
+        />
+        <FormStep
+          name="page8"
+          label="Host profile"
+          :elements="[
+            'h2_9',
+            'divider_17',
+            'profile',
+            'property',
+            'host_name',
+            'about_host',
+            'about_neighbourhood',
+            'divider_18',
+          ]"
+        />
+        <FormStep
+          name="page9"
+          label="Gallery"
+          :elements="[
+            'h2_10',
+            'divider_19',
+            'gallery',
+            'divider_20',
+          ]"
+        />
+        <FormStep
+          name="page10"
+          label="Payment"
+          :elements="[
+            'h2_11',
+            'divider_21',
+            'can_charge_card',
+            'price_per_night',
+            'divider_22',
+          ]"
+        />
+        <FormStep
+          name="page11"
+          label="Rate plans"
+          :elements="[
+            'h2_12',
+            'divider_23',
+            'h3',
+            'p_copy5',
+            'free_days_before_cancellation',
+            'accidental_booking_protection',
+            'standard_plan_divider',
+            'h4',
+            'p',
+            'group_discount',
+            'container',
+            'divider_29',
+            'h3_1',
+            'p_copy',
+            'p_copy2',
+            'nonrefundable_rate_plan',
+            'non_refundable_plan_discount',
+            'divider_30',
+            'h3_2',
+            'p_copy3',
+            'p_copy4',
+            'weekly_rate_plan',
+            'weekly_rate',
+            'divider_24',
+          ]"
+        />
+        <FormStep
+          name="page12"
+          label="Availability"
+          :elements="[
+            'h2_13',
+            'divider_25',
+            'available_from',
+            'available_from_date',
+            'divider_26',
+          ]"
+        />
+        <FormStep
+          name="page13"
+          label="Complete"
+          :elements="[
+            'h2_14',
+            'divider_27',
+            'terms_1',
+            'terms_2',
+            'divider_28',
+          ]"
+        />
+      </FormSteps>
+
+      <FormElements>
+        <StaticElement
+          name="h2"
+          content="Details"
+          tag="h2"
+          top="1"
+        />
+        <StaticElement
+          name="divider"
+          tag="hr"
+        />
+        <RadiogroupElement
+          name="accommodation_type"
+          view="tabs"
+          :items="[
+            'Apartment',
+            'Private',
+            'Hotel',
+            'Other',
+          ]"
+          :rules="[
+            'required',
+          ]"
+          field-name="Accommodation type"
+          default="Apartment"
+          label="Select accommodation type"
+        />
+        <CheckboxgroupElement
+          name="advert_elsewhere"
+          field-name="Posted elsewhere"
+          :items="[
+            'Airbnb',
+            'Tripadvisor',
+            'Vrbo',
+            'Other',
+          ]"
+          label="Have you posted it elsewhere?"
+        />
+        <GroupElement
+          name="import"
+          :conditions="[
+            [
+              'advert_elsewhere',
+              'in',
+              [
+                'Airbnb',
+                'Vrbo',
+              ],
+            ],
+          ]"
+        >
+          <TextElement
+            name="external_url"
+            input-type="url"
+            :rules="[
+              'required',
+              'max:255',
+              'url',
+            ]"
+            placeholder="eg. http(s)://domain.com"
+            :floating="false"
+            label="Import your data from Airbnb or Vrbo"
+            :columns="{
+              container: 9,
+              label: 12,
+              wrapper: 12,
+            }"
+            description="Ex.: https://airbnb.com/rooms/xxxxxxxxxx orhttps://vrbo.com/xxxxxx"
+          />
+          <ButtonElement
+            name="import_button"
+            button-label="Import"
+            :columns="{
+              container: 3,
+              label: 12,
+              wrapper: 12,
+            }"
+            button-type="anchor"
+            label="&nbsp;"
+            after="&nbsp;"
+            :full="true"
+            align="center"
+          />
+        </GroupElement>
+        <TextElement
+          name="accommodation_name"
+          description="This name will be shown in the results."
+          :rules="[
+            'required',
+            'max:255',
+          ]"
+          field-name="Name"
+          label="Name of accommodation"
+          default="Ferienwohnung auf der Hinteregg"
+        />
+        <StaticElement
+          name="divider_1"
+          tag="hr"
+          top="1"
+          bottom="1"
+        />
+        <StaticElement
+          name="h2_1"
+          content="Location of accommodation"
+          tag="h2"
+          top="1"
+        />
+        <StaticElement
+          name="divider_2"
+          tag="hr"
+        />
+        <ObjectElement
+          name="location"
+        >
+          <StaticElement
+            name="p"
+            tag="p"
+            content="Please make sure your address is correct, we will send a letter to make sure of authenticity - <b>later this is hard to modify</b>"
+          />
+          <SelectElement
+            name="country"
+            :search="true"
+            :native="false"
+            input-type="search"
+            autocomplete="off"
+            items="/json/countries.json"
+            :rules="[
+              'required',
+            ]"
+            label="Country"
+            default="CH"
+          />
+          <SelectElement
+            name="state"
+            :search="true"
+            :native="false"
+            input-type="search"
+            autocomplete="off"
+            items="/json/states.json"
+            :rules="[
+              'required',
+            ]"
+            label="State"
+            :conditions="[
+              [
+                'location.country',
+                'in',
+                [
+                  'US',
+                ],
+              ],
+            ]"
+          />
+          <TextElement
+            name="street"
+            label="Street name"
+            :rules="[
+              'required',
+              'max:255',
+            ]"
+            :columns="{
+              container: 8,
+              label: 12,
+              wrapper: 12,
+            }"
+            default="Alte Steige"
+          />
+          <TextElement
+            name="house_number"
+            label="House number"
+            :rules="[
+              'required',
+              'max:255',
+            ]"
+            :columns="{
+              container: 4,
+              label: 12,
+              wrapper: 12,
+            }"
+            default="15"
+          />
+          <TextElement
+            name="floor"
+            label="Floor or door number (optional)"
+            :rules="[
+              'nullable',
+              'max:255',
+            ]"
+          />
+          <TextElement
+            name="zip"
+            :rules="[
+              'required',
+              'max:255',
+            ]"
+            :columns="{
+              container: 4,
+              label: 12,
+              wrapper: 12,
+            }"
+            label="Zip code"
+            default="87629"
+          />
+          <TextElement
+            name="city"
+            :rules="[
+              'required',
+              'max:255',
+            ]"
+            :columns="{
+              container: 8,
+              label: 12,
+              wrapper: 12,
+            }"
+            label="City"
+            default="Füssen"
+          />
+        </ObjectElement>
+        <StaticElement
+          name="divider_3"
+          tag="hr"
+          top="1"
+          bottom="1"
+        />
+        <StaticElement
+          name="h2_2"
+          tag="h2"
+          content="Rooms"
+          top="1"
+        />
+        <StaticElement
+          name="divider_4"
+          tag="hr"
+        />
+        <TextElement
+          name="guests_count"
+          input-type="number"
+          :rules="[
+            'required',
+            'integer',
+          ]"
+          autocomplete="off"
+          label="How many guests can stay?"
+          :columns="{
+            wrapper: 2,
+          }"
+          default="4"
+        />
+        <TextElement
+          name="bathroom_count"
+          input-type="number"
+          :rules="[
+            'required',
+            'numeric',
+          ]"
+          autocomplete="off"
+          label="How many bathrooms?"
+          :columns="{
+            wrapper: 2,
+          }"
+          default="2"
+        />
+        <TextElement
+          name="size"
+          input-type="number"
+          :rules="[
+            'nullable',
+            'numeric',
+          ]"
+          autocomplete="off"
+          label="How big is this apartment? (optional)"
+          :columns="{
+            wrapper: 2,
+          }"
+          :addons="{
+            after: 'm<sup>2</sup>',
+          }"
+          default="75"
+        />
+        <StaticElement
+          name="h2_3"
+          tag="h2"
+          content="Room editor"
+          top="2"
+        />
+        <StaticElement
+          name="divider_5"
+          tag="hr"
+        />
+        <ListElement
+          name="rooms"
+          add-text="+ Add room"
+        >
+          <template #default="{ index }">
+            <ObjectElement
+              :name="index"
+            >
+              <StaticElement
+                name="h4"
+                tag="h4"
+                content="Room"
+              />
+              <SelectElement
+                name="room_type"
+                :search="true"
+                :native="false"
+                label="Room type"
+                input-type="search"
+                autocomplete="off"
+                :items="[
+                  'Bedroom',
+                  'Living room',
+                  'Other',
+                ]"
+                :rules="[
+                  'required',
+                ]"
+                default="Bedroom"
+              />
+              <StaticElement
+                name="html"
+                :columns="{
+                  container: 1,
+                }"
+              />
+              <GroupElement
+                name="container"
+                :columns="{
+                  container: 11,
+                }"
+              >
+                <StaticElement
+                  name="h4"
+                  tag="h4"
+                  content="Beds"
+                />
+                <GroupElement
+                  name="container"
+                  :conditions="[
+                    [
+                      'rooms.*.container.beds',
+                      'not_empty',
+                    ],
+                  ]"
+                >
+                  <StaticElement
+                    name="html"
+                    content="Bed type"
+                    :columns="{
+                      container: 10,
+                    }"
+                  />
+                  <StaticElement
+                    name="html_copy"
+                    content="Count"
+                    :columns="{
+                      container: 2,
+                    }"
+                  />
+                </GroupElement>
+                <ListElement
+                  name="beds"
+                  add-text="+ Add bed"
+                >
+                  <template #default="{ index }">
+                    <ObjectElement
+                      :name="index"
+                    >
+                      <SelectElement
+                        name="bed_type"
+                        :search="true"
+                        :native="false"
+                        input-type="search"
+                        autocomplete="off"
+                        :columns="{
+                          container: 10,
+                        }"
+                        :items="[
+                          'Single bed (90 cm - 130 cm)',
+                          'Big single bed (131 cm - 150 cm)',
+                          'Double bed (151 cm - 180 cm)',
+                          'Big double bed (181 cm - 210 cm)',
+                          'Bunk-bed (variable size)',
+                          'Sofa-bed (variable size)',
+                          'Futon (variable size)',
+                        ]"
+                        default="Single bed (90 cm - 130 cm)"
+                      />
+                      <TextElement
+                        name="bed_count"
+                        input-type="number"
+                        :rules="[
+                          'required',
+                          'integer',
+                        ]"
+                        autocomplete="off"
+                        :columns="{
+                          container: 2,
+                        }"
+                        default="1"
+                      />
+                    </ObjectElement>
+                  </template>
+                </ListElement>
+              </GroupElement>
+              <StaticElement
+                name="divider"
+                tag="hr"
+              />
+            </ObjectElement>
+          </template>
+        </ListElement>
+        <StaticElement
+          name="divider_6"
+          tag="hr"
+          bottom="1"
+        />
+        <StaticElement
+          name="h2_4"
+          tag="h2"
+          content="Equipment & facilities"
+          top="1"
+        />
+        <StaticElement
+          name="divider_7"
+          tag="hr"
+        />
+        <ObjectElement
+          name="equipment"
+        >
+          <CheckboxgroupElement
+            name="general"
+            label="General"
+            :items="[
+              'AC',
+              'Heating',
+              'Free Wifi',
+              'Electric car charger',
+            ]"
+            :columns="{
+              container: 6,
+              label: 12,
+              wrapper: 12,
+            }"
+          />
+          <CheckboxgroupElement
+            name="kitchen"
+            label="Kitchen and cleaning"
+            :columns="{
+              container: 6,
+              label: 12,
+              wrapper: 12,
+            }"
+            :items="[
+              'Electric kettle',
+              'Tea/coffee maker',
+              'Towels',
+              'Washing machine',
+              'Dishwasher',
+            ]"
+          />
+          <CheckboxgroupElement
+            name="entertainment"
+            label="Entertainment"
+            :columns="{
+              container: 6,
+              label: 12,
+              wrapper: 12,
+            }"
+            :items="[
+              'Flat screen tv',
+              'Bar',
+              'Hot tub',
+              'Sauna',
+              'Swimming pool',
+            ]"
+          />
+          <CheckboxgroupElement
+            name="outside"
+            label="Outside"
+            :columns="{
+              container: 6,
+              label: 12,
+              wrapper: 12,
+            }"
+            :items="[
+              'BBQ',
+              'Balcony',
+              'Garden',
+              'Beach',
+            ]"
+          />
+        </ObjectElement>
+        <StaticElement
+          name="divider_8"
+          tag="hr"
+          top="1"
+          bottom="1"
+        />
+        <StaticElement
+          name="h2_5"
+          tag="h2"
+          content="Breakfast details"
+          top="1"
+        />
+        <StaticElement
+          name="divider_9"
+          tag="hr"
+        />
+        <RadiogroupElement
+          name="serve_breakfast"
+          view="tabs"
+          :items="[
+            'Yes',
+            'No',
+          ]"
+          default="No"
+          :rules="[
+            'required',
+          ]"
+          label="Do you serve breakfast?"
+          field-name="Breakfast"
+        />
+        <RadiogroupElement
+          name="breakfast_in_price"
+          view="tabs"
+          :items="[
+            'Yes',
+            'No',
+          ]"
+          default="Yes"
+          :rules="[
+            'required',
+          ]"
+          label="Is it included in the price?"
+          :conditions="[
+            [
+              'serve_breakfast',
+              'in',
+              [
+                'Yes',
+              ],
+            ],
+          ]"
+        />
+        <TextElement
+          name="breakfast_price"
+          input-type="number"
+          :rules="[
+            'required',
+            'numeric',
+          ]"
+          autocomplete="off"
+          label="Breakfast cost per person, per day"
+          :addons="{
+            before: '$',
+          }"
+          description="Including taxes and fees."
+          :conditions="[
+            [
+              'breakfast_in_price',
+              'in',
+              [
+                'No',
+              ],
+            ],
+            [
+              'serve_breakfast',
+              'in',
+              [
+                'Yes',
+              ],
+            ],
+          ]"
+        />
+        <TagsElement
+          name="breakfast_types"
+          :close-on-select="false"
+          label="What types of breakfasts do you offer?"
+          :items="[
+            'Á la carte',
+            'American',
+            'Asian',
+            'Breakfast togo',
+            'Buffet',
+            'Continental',
+            'Full English/Irish',
+            'Gluten-free',
+            'Halal',
+            'Italian',
+            'Kosher',
+            'Vegan',
+            'Vegetarian',
+          ]"
+          :rules="[
+            'required',
+          ]"
+          :search="true"
+          input-type="search"
+          autocomplete="off"
+          :conditions="[
+            [
+              'serve_breakfast',
+              'in',
+              [
+                'Yes',
+              ],
+            ],
+          ]"
+          description="Select all that applies."
+        />
+        <StaticElement
+          name="divider_10"
+          tag="hr"
+          top="1"
+          bottom="1"
+        />
+        <StaticElement
+          name="h2_6"
+          tag="h2"
+          content="Parking"
+          top="1"
+        />
+        <StaticElement
+          name="divider_11"
+          tag="hr"
+        />
+        <RadiogroupElement
+          name="parking"
+          view="tabs"
+          label="Is parking available to the guests?"
+          :items="[
+            'Yes, free',
+            'Yes, paid',
+            'No',
+          ]"
+          default="No"
+          :rules="[
+            'required',
+          ]"
+        />
+        <TextElement
+          name="parking_price"
+          input-type="number"
+          :rules="[
+            'required',
+            'numeric',
+          ]"
+          autocomplete="off"
+          label="Cost of parking"
+          :addons="{
+            before: '$',
+          }"
+          :columns="{
+            container: 6,
+            label: 12,
+            wrapper: 12,
+          }"
+          :conditions="[
+            [
+              'parking',
+              'in',
+              [
+                'Yes, paid',
+              ],
+            ],
+          ]"
+        />
+        <SelectElement
+          name="parking_interval"
+          :search="true"
+          :native="false"
+          input-type="search"
+          autocomplete="off"
+          :columns="{
+            container: 6,
+            label: 12,
+            wrapper: 12,
+          }"
+          label="&nbsp;"
+          :rules="[
+            'required',
+          ]"
+          :can-deselect="false"
+          :items="[
+            'Per hour',
+            'Per day',
+            'Per stay',
+          ]"
+          default="Per day"
+          :conditions="[
+            [
+              'parking',
+              'in',
+              [
+                'Yes, paid',
+              ],
+            ],
+          ]"
+        />
+        <RadiogroupElement
+          name="parking_reservation"
+          view="tabs"
+          label="Do guests need to reserve a parking spot?"
+          :items="[
+            'Yes',
+            'No',
+          ]"
+          :rules="[
+            'required',
+          ]"
+          :conditions="[
+            [
+              'parking',
+              'not_in',
+              [
+                'No',
+              ],
+            ],
+          ]"
+        />
+        <RadiogroupElement
+          name="parking_location"
+          view="tabs"
+          label="Where is the parking located?"
+          :rules="[
+            'required',
+          ]"
+          :items="[
+            'On site',
+            'Off site',
+          ]"
+          :conditions="[
+            [
+              'parking',
+              'not_in',
+              [
+                'No',
+              ],
+            ],
+          ]"
+        />
+        <TextareaElement
+          name="parking_location_offsite_description"
+          label="Offsite parking location/description"
+          :conditions="[
+            [
+              'parking_location',
+              'in',
+              [
+                'Off site',
+              ],
+            ],
+          ]"
+          :rules="[
+            'required',
+            'min:3',
+          ]"
+          :rows="2"
+        />
+        <RadiogroupElement
+          name="parking_type"
+          view="tabs"
+          label="What type of parking is it?"
+          :items="[
+            'Private',
+            'Public',
+          ]"
+          :rules="[
+            'required',
+          ]"
+          :conditions="[
+            [
+              'parking',
+              'not_in',
+              [
+                'No',
+              ],
+            ],
+          ]"
+        />
+        <StaticElement
+          name="divider_12"
+          tag="hr"
+          top="1"
+          bottom="1"
+        />
+        <StaticElement
+          name="h2_7"
+          tag="h2"
+          content="Spoken language"
+          top="1"
+        />
+        <StaticElement
+          name="divider_13"
+          tag="hr"
+        />
+        <TagsElement
+          name="languages"
+          :close-on-select="false"
+          :search="true"
+          label="Select all that applies."
+          input-type="search"
+          autocomplete="off"
+          items="/json/languages.json"
+          :rules="[
+            'required',
+          ]"
+          :default="[
+            'English',
+          ]"
+        />
+        <StaticElement
+          name="divider_14"
+          tag="hr"
+          top="1"
+          bottom="1"
+        />
+        <StaticElement
+          name="h2_8"
+          tag="h2"
+          content="House rules"
+          top="1"
+        />
+        <StaticElement
+          name="divider_15"
+          tag="hr"
+        />
+        <CheckboxgroupElement
+          name="rules"
+          :items="[
+            'Smoking allowed',
+            'Pets allowed',
+            'Children allowed',
+            'Parties/events allowed',
+          ]"
+        />
+        <DateElement
+          name="check_in_from"
+          label="Check-in"
+          :time="true"
+          :date="false"
+          :columns="{
+            container: 4,
+            label: 12,
+            wrapper: 12,
+          }"
+          :rules="[
+            'required',
+          ]"
+          placeholder="From"
+          default="15:00"
+        />
+        <DateElement
+          name="check_in_until"
+          :time="true"
+          :date="false"
+          :columns="{
+            container: 4,
+            label: 12,
+            wrapper: 12,
+          }"
+          :rules="[
+            'required',
+          ]"
+          placeholder="Until"
+          label="&nbsp;"
+          default="23:00"
+        />
+        <StaticElement
+          name="p_1"
+          tag="p"
+          :columns="{
+            container: 4,
+          }"
+        />
+        <DateElement
+          name="check_out_from"
+          label="Check-out"
+          :time="true"
+          :date="false"
+          :columns="{
+            container: 4,
+            label: 12,
+            wrapper: 12,
+          }"
+          :rules="[
+            'required',
+          ]"
+          placeholder="From"
+          default="06:00"
+        />
+        <DateElement
+          name="check_out_until"
+          :time="true"
+          :date="false"
+          :columns="{
+            container: 4,
+            label: 12,
+            wrapper: 12,
+          }"
+          :rules="[
+            'required',
+          ]"
+          placeholder="Until"
+          label="&nbsp;"
+          default="10:00"
+        />
+        <StaticElement
+          name="divider_16"
+          tag="hr"
+          bottom="1"
+          top="1"
+        />
+        <StaticElement
+          name="h2_9"
+          tag="h2"
+          content="Host profile"
+          top="1"
+        />
+        <StaticElement
+          name="divider_17"
+          tag="hr"
+        />
+        <CheckboxgroupElement
+          name="profile"
+          :items="[
+            'The property',
+            'The host',
+            'The neighbourhood',
+          ]"
+          :default="[
+            'The property',
+          ]"
+        />
+        <TextareaElement
+          name="property"
+          label="About the property"
+          placeholder="What makes your place unique? What can guests expect?"
+          :conditions="[
+            [
+              'profile',
+              'in',
+              [
+                'The property',
+              ],
+            ],
+          ]"
+          :rules="[
+            'required',
+          ]"
+        />
+        <TextElement
+          name="host_name"
+          label="Host name"
+          :rules="[
+            'required',
+            'max:255',
+          ]"
+          :conditions="[
+            [
+              'profile',
+              'in',
+              [
+                'The host',
+              ],
+            ],
+          ]"
+        />
+        <TextareaElement
+          name="about_host"
+          label="About the host"
+          placeholder="What are your interests? What do you like about hosting?"
+          :rules="[
+            'required',
+            'max:1023',
+          ]"
+          :conditions="[
+            [
+              'profile',
+              'in',
+              [
+                'The host',
+              ],
+            ],
+          ]"
+        />
+        <TextareaElement
+          name="about_neighbourhood"
+          label="About the neighbourhood"
+          placeholder="What’s the area like? Are there any attractions nearby?"
+          :rules="[
+            'required',
+            'max:1023',
+          ]"
+          :conditions="[
+            [
+              'profile',
+              'in',
+              [
+                'The neighbourhood',
+              ],
+            ],
+          ]"
+        />
+        <StaticElement
+          name="divider_18"
+          tag="hr"
+          bottom="1"
+          top="1"
+        />
+        <StaticElement
+          name="h2_10"
+          tag="h2"
+          content="What does your place look like?"
+          top="1"
+        />
+        <StaticElement
+          name="divider_19"
+          tag="hr"
+        />
+        <MultifileElement
+          name="gallery"
+          view="gallery"
+          accept="image/*,image/jpeg,image/png,image/gif,image/svg+xml"
+          :drop="true"
+          description="First uploaded photo will be shown in search resultsMax size is 2MB/file, accepted formats are: JPG, PNG, GIF, SVG. You’re 29% more likely to get bookings if you upload at least 5 photos."
+          :file="{
+            rules: [
+              'mimetypes:image/jpeg,image/png,image/gif,image/svg+xml',
+              'max:2048',
+            ],
+          }"
+          before="Add at least one photo now. You can always add more later."
+          field-name="gallery"
+        />
+        <StaticElement
+          name="divider_20"
+          tag="hr"
+          top="1"
+          bottom="1"
+        />
+        <StaticElement
+          name="h2_11"
+          tag="h2"
+          content="Guest payment options"
+          top="1"
+        />
+        <StaticElement
+          name="divider_21"
+          tag="hr"
+        />
+        <RadiogroupElement
+          name="can_charge_card"
+          view="tabs"
+          label="Can you charge credit cards at your property?"
+          :items="[
+            'Yes',
+            'No',
+          ]"
+          default="Yes"
+          :rules="[
+            'required',
+          ]"
+        />
+        <TextElement
+          name="price_per_night"
+          input-type="number"
+          :rules="[
+            'required',
+            'numeric',
+          ]"
+          autocomplete="off"
+          label="How much do you want to charge per night?"
+          :addons="{
+            before: '$',
+          }"
+          description="Including taxes, commission, and fees"
+          :columns="{
+            wrapper: 3,
+          }"
+          default="120"
+        />
+        <StaticElement
+          name="divider_22"
+          tag="hr"
+          bottom="1"
+          top="1"
+        />
+        <StaticElement
+          name="h2_12"
+          tag="h2"
+          content="Rate plans"
+          top="1"
+        />
+        <StaticElement
+          name="divider_23"
+          tag="hr"
+        />
+        <StaticElement
+          name="h3"
+          tag="h3"
+          content="Standard rate plan"
+          top="1"
+        />
+        <StaticElement
+          name="p_copy5"
+          tag="p"
+          content="How many days before arrival can guests cancel their booking for free?"
+        />
+        <TextElement
+          name="free_days_before_cancellation"
+          input-type="number"
+          :rules="[
+            'required',
+            'min:1',
+            'max:30',
+            'integer',
+          ]"
+          autocomplete="off"
+          :addons="{
+            after: 'days',
+          }"
+          default="2"
+          description="Guests love flexibility – free cancellation rates are generally the most booked rates. Get your first booking sooner by allowing guests to cancel up to one day before check-in."
+          field-name="cancellation days"
+          :columns="{
+            wrapper: 2,
+          }"
+        />
+        <ToggleElement
+          name="accidental_booking_protection"
+          text="Accidental booking protection"
+          description="To avoid having to deal with accidental bookings, we automatically waive cancellation fees for guests who cancel within 24 hours of booking."
+          :default="true"
+          :labels="{
+            on: 'On',
+            off: 'Off',
+          }"
+        />
+        <StaticElement
+          name="standard_plan_divider"
+          tag="hr"
+        />
+        <StaticElement
+          name="h4"
+          tag="h4"
+          content="Discount"
+        />
+        <StaticElement
+          name="p"
+          tag="p"
+          content="Offering lower rates for groups of less than 3 makes your property more attractive to potential guests."
+        />
+        <ToggleElement
+          name="group_discount"
+          text="Price per group size"
+          :labels="{
+            on: 'On',
+            off: 'Off',
+          }"
+        />
+        <GroupElement
+          name="container"
+          :conditions="[
+            [
+              'group_discount',
+              '==',
+              true,
+            ],
+          ]"
+          description="The recommended discounts are based on data from properties like yours. These can be updated at any time."
+        >
+          <TextElement
+            name="guest_discount_1"
+            placeholder="Discount"
+            :columns="{
+              container: 4,
+            }"
+            :addons="{
+              after: '%',
+            }"
+            label="1 guest"
+            :rules="[
+              'integer',
+            ]"
+            default="20"
+            input-type="number"
+          />
+          <TextElement
+            name="guest_discount_2"
+            placeholder="Discount"
+            :columns="{
+              container: 4,
+            }"
+            :addons="{
+              after: '%',
+            }"
+            label="2 guests"
+            :rules="[
+              'integer',
+            ]"
+            default="10"
+            input-type="number"
+          />
+          <TextElement
+            name="guest_discount_3"
+            placeholder="Discount"
+            :columns="{
+              container: 4,
+            }"
+            :addons="{
+              after: '%',
+            }"
+            label="3+ guests"
+            :rules="[
+              'integer',
+            ]"
+            default="0"
+            input-type="number"
+          />
+        </GroupElement>
+        <StaticElement
+          name="divider_29"
+          tag="hr"
+        />
+        <StaticElement
+          name="h3_1"
+          tag="h3"
+          content="Non-refundable rate plan"
+          top="1"
+        />
+        <StaticElement
+          name="p_copy"
+          tag="p"
+          content="In addition to the standard rate plan you created for your property, you can add a non-refundable rate plan. "
+        />
+        <StaticElement
+          name="p_copy2"
+          tag="p"
+          content="With this, you set a discounted price but your revenue for these bookings is guaranteed because guests won't receive a refund if they cancel or no-show."
+        />
+        <ToggleElement
+          name="nonrefundable_rate_plan"
+          text="Set up non-refundable rate plan"
+          :labels="{
+            on: 'On',
+            off: 'Off',
+          }"
+        />
+        <TextElement
+          name="non_refundable_plan_discount"
+          input-type="number"
+          autocomplete="off"
+          label="Discount for guests that book with this rate plan:"
+          :addons="{
+            after: '%',
+          }"
+          description="Guests who select non-refundable rates are usually looking for competitive prices. A discount of at least 10% will attract more guests by improving your visibility."
+          default="10"
+          :columns="{
+            wrapper: 2,
+          }"
+          :conditions="[
+            [
+              'nonrefundable_rate_plan',
+              '==',
+              true,
+            ],
+          ]"
+        />
+        <StaticElement
+          name="divider_30"
+          tag="hr"
+        />
+        <StaticElement
+          name="h3_2"
+          tag="h3"
+          content="Weekly rate plan"
+          top="1"
+        />
+        <StaticElement
+          name="p_copy3"
+          tag="p"
+          content="In addition to the standard rate plan you created for your property, you can add a weekly rate plan."
+        />
+        <StaticElement
+          name="p_copy4"
+          tag="p"
+          content="For this, you set a discounted price and use the same cancellation policy as the standard rate plan. Guests who stay for at least a week are interested in discounts since they’ll be spending more on their overall booking."
+        />
+        <ToggleElement
+          name="weekly_rate_plan"
+          text="Set up weekly rate"
+          :labels="{
+            on: 'On',
+            off: 'Off',
+          }"
+        />
+        <TextElement
+          name="weekly_rate"
+          input-type="number"
+          :rules="[
+            'required',
+            'integer',
+          ]"
+          autocomplete="off"
+          label="How much cheaper than the standard rate?"
+          :addons="{
+            after: '%',
+          }"
+          :columns="{
+            wrapper: 2,
+          }"
+          default="15"
+          :conditions="[
+            [
+              'weekly_rate_plan',
+              '==',
+              true,
+            ],
+          ]"
+        />
+        <StaticElement
+          name="divider_24"
+          tag="hr"
+          bottom="1"
+          top="1"
+        />
+        <StaticElement
+          name="h2_13"
+          tag="h2"
+          content="Availability"
+          top="1"
+        />
+        <StaticElement
+          name="divider_25"
+          tag="hr"
+        />
+        <RadiogroupElement
+          name="available_from"
+          view="tabs"
+          label="What's the first date when guests can check in?"
+          :items="[
+            'As soon as possible',
+            'On a specific date',
+          ]"
+          default="As soon as possible"
+        />
+        <DateElement
+          name="available_from_date"
+          :rules="[
+            'required',
+          ]"
+          :conditions="[
+            [
+              'available_from',
+              'in',
+              [
+                'On a specific date',
+              ],
+            ],
+          ]"
+          placeholder="Choose a date"
+          :floating="false"
+          display-format="Do MMM, YYYY"
+        />
+        <StaticElement
+          name="divider_26"
+          tag="hr"
+          bottom="1"
+          top="1"
+        />
+        <StaticElement
+          name="h2_14"
+          tag="h2"
+          content="Complete"
+          top="1"
+        />
+        <StaticElement
+          name="divider_27"
+          tag="hr"
+        />
+        <CheckboxElement
+          name="terms_1"
+          text="I certify that this is a legitimate accommodation business with all necessary licenses and permits, which can be shown upon first request. Mydomain.com B.V. reserves the right to verify and investigate any details provided in this registration."
+          field-name="Registration rights"
+          :rules="[
+            'accepted',
+          ]"
+        />
+        <CheckboxElement
+          name="terms_2"
+          text="I have read, accepted, and agreed to the Terms and Conditions and Privacy Policy."
+          field-name="Terms"
+          :rules="[
+            'accepted',
+          ]"
+        />
+        <StaticElement
+          name="divider_28"
+          tag="hr"
+          bottom="1"
+          top="1"
+        />
+      </FormElements>
+
+      <FormStepsControls />
+    </template>
+  </Vueform>
+</template>
