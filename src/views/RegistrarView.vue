@@ -2,7 +2,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col lg-12" style="border:solid 1px #000">
+            <div class="col lg-12 p-4" style="border:solid 1px #000">
                 <registrar-component/>
             </div>
         </div>
