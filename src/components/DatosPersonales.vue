@@ -1,37 +1,35 @@
 <template>
     <form action="">
-        <div class="row">
-            <div class="col lg-12">
-                <div class="input-group">
-                    <span class="input-group-text">Matricula</span>
-                    <input type="number" class="form-control" v-model="data.fechaNacimiento" @change="calculoEdad()">
-                     <span class="input-group-text" id="basic-addon1">-</span>
-                    <input type="number" class="form-control">
-                     <span class="input-group-text" id="basic-addon1">-</span>
-                    <input type="text" class="form-control">
-                </div>
+        <div class="row mt-3 mb-0">
+            <div class="text-center text-primary">
+                <h4>Datos Personales</h4>
             </div>
         </div>
-       <div class="row mt-3"> 
-            
-            <div class="col lg-12">
+        <div class="row mt-3">
+            <div class="col lg-6">
                 <div class="form-floating">
-                    <input type="date" id="fechaCirugia" class="form-control" v-model="data.fechaCirugia" placeholder="Ingrese sus apellidos">
-                    <label for="fechaCirugia">Fecha de la cirugia</label>
+                    <input type="date" class="form-control" v-model="data.fechaNacimiento">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
                 </div>
             </div>
-       </div>
+            <div class="col lg-6">
+                <div class="form-floating">
+                    <input type="date" id="fechaCirugia" class="form-control" v-model="data.fechaCirugia" placeholder="Ingrese sus apellidos" @change="calculoEdad()">
+                    <label for="fechaCirugia">Fecha de la cirugia</label>
+                </div>
+            </div>    
+        </div> 
        <div class="row mt-3">
             <div class="col-lg-6">
                 <div class="form-floating">
                     <p class="m-1" style="align-items: start;">Genero:</p>
                     <div class="form-check-inline">
                         <input type="radio" name="genero" id="masculino" class="form-check-input" v-model="data.genero" value="masculino" checked>
-                        <label for="masculino" class="form-check-label">Masculino</label>
+                        <label for="masculino" class="form-check-label"> Masculino</label>
                     </div>
                     <div class="form-check-inline">
                         <input type="radio" name="genero" id="femenino" class="form-check-input" v-model="data.genero" value="femenino">
-                        <label for="femenino" class="form-check-label">Femenino</label>
+                        <label for="femenino" class="form-check-label"> Femenino</label>
                     </div>
 
                 </div>
@@ -86,7 +84,6 @@
             </div>
        </div>
        <div class="row mt-3">
-            
             <div class="col-lg-12">
                 <div class="form-floating" >
                     <p class="m-1" >Tipo de Cirugia:</p>
@@ -104,9 +101,25 @@
                     </div>
                     <div class="form-check-inline">
                         <input type="radio" name="tipoCirugia" id="otro" class="form-check-input" v-model="data.tipoCirugia" value="otro" >
-                        <label for="otro" class="form-check-label">Otro</label>
+                        <label for="otro" class="form-check-label">Otros</label>
                     </div>
                 </div>
+            </div>
+            <div v-if="data.tipoCirugia === 'otro'">
+                <div class="form-floating mt-3">
+                    <textarea name="otraCirugia" id="otraCirugia" cols="30" rows="3" class="form-control" v-model="data.otraCirugia"></textarea>
+                    <label for="otraCirugia">Otra Cirugia</label>
+                </div>
+            </div>
+            
+       </div>
+
+       <div class="row mt-3">
+            <div class="col-lg-6 d-grid mt-2">
+               <button class="btn btn-success" @click="save">Guardar</button>               
+            </div>
+            <div class="col-lg-6 d-grid mt-1">
+               <button class="btn btn-secondary">Salir</button>               
             </div>
        </div>
     </form>
@@ -120,17 +133,6 @@
             imc:0,
         }),
         computed:{
-            calculateImc() {
-                const peso = this.data.peso;
-                const talla = this.data.talla;
-
-                if (peso > 0 && talla > 0) {
-                    const imcValue = (peso / ((talla / 100) * (talla / 100)));
-                    return imcValue.toFixed(1);
-                } else {
-                    return 0;
-                }
-            }
         },
         methods:{
             calculoImc() {
@@ -145,16 +147,48 @@
                 }
             },
             calculoEdad(){
-                const fechaNacimiento = (this.data.fechaNacimiento);
-                const fechaActual = new Date();
-                let edad = fechaActual.getFullYear() - fechaNacimiento;
-                /*const mes = fechaActual.getMonth() - fechaNacimiento.getMonth();
+                const fechaNacimiento = new Date(this.data.fechaNacimiento);
+                const fechaCirugia = new Date(this.data.fechaCirugia);
+                let edad = fechaCirugia.getFullYear() - fechaNacimiento.getFullYear();
+                const mes = fechaCirugia.getMonth() - fechaNacimiento.getMonth();
 
-                if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNacimiento.getDate())) {
+                if (mes < 0 || (mes === 0 && fechaCirugia.getDate() < fechaNacimiento.getDate())) {
                     edad--;
-                }*/
-                console.log("Nuevo valor de edad:", edad);
+                }
                 this.data.edad = edad;
+            },
+            save(){
+                const dataToSave = {
+                    fechaNacimiento: this.data.fechaNacimiento,
+                    fechaCirugia: this.data.fechaCirugia,
+                    genero: this.data.genero,
+                    edad: this.data.edad,
+                    peso: this.data.peso,
+                    talla: this.data.talla,
+                    imc: this.imc,
+                    asa: this.data.asa,
+                    tipoCirugia: this.data.tipoCirugia,
+                    otraCirugia: this.data.otraCirugia
+                };
+                fetch('/api/guardarDatosPersonales', {
+                    method: 'POST',
+                    headers: {
+                       "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dataToSave)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === 'failed'){
+                        alert('Estos datos ya existen: '+ data.message);
+                    }
+                })
+                .catch((error) => {
+                    alert('Errores: '+ error);
+                });
+                this.censo = {};                                                                                                                
+                this.camasLibres = 0;
+
             }
         }
     }
