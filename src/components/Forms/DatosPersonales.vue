@@ -1,5 +1,5 @@
 <template>
-    <form action="">
+    <form v-on:submit.prevent="save">
         <div class="row mt-3 mb-0">
             <div class="text-center text-primary">
                 <h4>Datos Personales</h4>
@@ -8,13 +8,13 @@
         <div class="row mt-3">
             <div class="col lg-6">
                 <div class="form-floating">
-                    <input type="date" class="form-control" v-model="data.fechaNacimiento">
+                    <input type="date" class="form-control" v-model="data.fechaNacimiento" required>
                     <label for="fechaNacimiento">Fecha de nacimiento</label>
                 </div>
             </div>
             <div class="col lg-6">
                 <div class="form-floating">
-                    <input type="date" id="fechaCirugia" class="form-control" v-model="data.fechaCirugia" placeholder="Ingrese sus apellidos" @change="calculoEdad()">
+                    <input type="date" id="fechaCirugia" class="form-control" v-model="data.fechaCirugia" placeholder="Ingrese sus apellidos" @change="calculoEdad()" required>
                     <label for="fechaCirugia">Fecha de la cirugia</label>
                 </div>
             </div>    
@@ -24,11 +24,11 @@
                 <div class="form-floating">
                     <p class="m-1" style="align-items: start;">Genero:</p>
                     <div class="form-check-inline">
-                        <input type="radio" name="genero" id="masculino" class="form-check-input" v-model="data.genero" value="masculino" checked>
+                        <input type="radio" name="genero" id="masculino" class="form-check-input" v-model="data.genero" value="masculino" required>
                         <label for="masculino" class="form-check-label"> Masculino</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="genero" id="femenino" class="form-check-input" v-model="data.genero" value="femenino">
+                        <input type="radio" name="genero" id="femenino" class="form-check-input" v-model="data.genero" value="femenino" required>
                         <label for="femenino" class="form-check-label"> Femenino</label>
                     </div>
 
@@ -45,15 +45,15 @@
        <div class="row mt-3">
             <div class="col lg-6">
                 <div class="form-floating">
-                    <input type="number" id="peso" name="peso" class="form-control" placeholder="" v-model="data.peso" @change="calculoImc">
-                    <label for="peso">Peso</label>
+                    <input type="number" id="peso" name="peso" class="form-control" placeholder="" v-model="data.peso" @change="calculoImc" required>
+                    <label for="peso">Peso (kg)</label>
                     
                 </div>
             </div>
             <div class="col lg-6">
                 <div class="form-floating">
-                    <input type="number" id="talla" name="talla" class="form-control" placeholder="" v-model="data.talla" @change="calculoImc">
-                    <label for="talla">Talla</label>
+                    <input type="number" id="talla" name="talla" class="form-control" placeholder="" v-model="data.talla" @change="calculoImc" required>
+                    <label for="talla">Talla (cm)</label>
                 </div>
             </div>
        </div>
@@ -69,15 +69,15 @@
                 <div class="form-floating">
                     <p class="m-1" style="align-items: start;">Clasificacion ASA:</p>
                     <div class="form-check-inline">
-                        <input type="radio" name="asa" id="asa1" class="form-check-input" v-model="data.asa" value="asa1">
+                        <input type="radio" name="asa" id="asa I" class="form-check-input" v-model="data.asa" value="Asa I" required>
                         <label for="asa1" class="form-check-label">ASA I</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="asa" id="asa2" class="form-check-input" v-model="data.asa" value="asa2">
+                        <input type="radio" name="asa" id="asa II" class="form-check-input" v-model="data.asa" value="Asa II" required>
                         <label for="asa2" class="form-check-label">ASA II</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="asa" id="asa3" class="form-check-input" v-model="data.asa" value="asa3">
+                        <input type="radio" name="asa" id="asa III" class="form-check-input" v-model="data.asa" value="Asa III" required>
                         <label for="asa3" class="form-check-label">ASA III</label>
                     </div>
                 </div>
@@ -88,19 +88,19 @@
                 <div class="form-floating" >
                     <p class="m-1" >Tipo de Cirugia:</p>
                     <div class="form-check-inline">
-                        <input type="radio" name="tipoCirugia" id="colecistectomia" class="form-check-input" v-model="data.tipoCirugia" value="colecistectomia" >
+                        <input type="radio" name="tipoCirugia" id="colecistectomia" class="form-check-input" v-model="data.tipoCirugia" value="colecistectomia" required>
                         <label for="colecistectomia" class="form-check-label">Colecistectomia</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="tipoCirugia" id="hernorrafia" class="form-check-input" v-model="data.tipoCirugia" value="hernorrafia">
+                        <input type="radio" name="tipoCirugia" id="hernorrafia" class="form-check-input" v-model="data.tipoCirugia" value="hernorrafia" required>
                         <label for="hernorrafia" class="form-check-label">Hernorrafia</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="tipoCirugia" id="bariatrica" class="form-check-input" v-model="data.tipoCirugia" value="bariatrica">
+                        <input type="radio" name="tipoCirugia" id="bariatrica" class="form-check-input" v-model="data.tipoCirugia" value="bariatrica" required>
                         <label for="bariatrica" class="form-check-label">Bariatrica</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="tipoCirugia" id="otro" class="form-check-input" v-model="data.tipoCirugia" value="otro" >
+                        <input type="radio" name="tipoCirugia" id="otro" class="form-check-input" v-model="data.tipoCirugia" value="otro"  required>
                         <label for="otro" class="form-check-label">Otros</label>
                     </div>
                 </div>
@@ -113,15 +113,15 @@
             </div>
             
        </div>
-
-       <div class="row mt-3">
+        <div class="row mt-3">
             <div class="col-lg-6 d-grid mt-2">
                <button class="btn btn-success" @click="save">Guardar</button>               
             </div>
             <div class="col-lg-6 d-grid mt-1">
                <button class="btn btn-secondary">Salir</button>               
             </div>
-       </div>
+        </div>
+       
     </form>
 </template>
 
@@ -170,7 +170,8 @@
                     tipoCirugia: this.data.tipoCirugia,
                     otraCirugia: this.data.otraCirugia
                 };
-                fetch('/api/guardarDatosPersonales', {
+                console.log(JSON.stringify(dataToSave));
+                /*fetch('/api/guardarDatosPersonales', {
                     method: 'POST',
                     headers: {
                        "Content-Type": "application/json"
@@ -186,10 +187,9 @@
                 .catch((error) => {
                     alert('Errores: '+ error);
                 });
-                this.censo = {};                                                                                                                
-                this.camasLibres = 0;
+                */
 
-            }
+            },
         }
     }
 </script>

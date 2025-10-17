@@ -1,29 +1,21 @@
 <template>
-    <h1 style="text-align: center;">Formulario</h1>
+    <h1 style="text-align: start;">Nuevo registro</h1>
 
-    <div v-if="datosPersonales == false">
+    <div>
         <datos-personales-form></datos-personales-form>
-    </div>
-    <div v-if="datosIntraOperatorio == false">
-        <datos-intra-operatorios-form></datos-intra-operatorios-form>
-    </div>
-    <div v-if="datosPostOperatorio == false">
-        <datos-post-operatorios-form></datos-post-operatorios-form>
     </div>
 
 
 </template>
 <script>
-    import DatosPersonalesForm from './DatosPersonales.vue'; 
-    import DatosIntraOperatoriosForm from './DatosIntraOperatorios.vue';   
-    import DatosPostOperatoriosForm from './DatosPostOperatorios.vue';
+    import DatosPersonalesForm from './Forms/DatosPersonales.vue'; 
+   
     export default{
         name:"RegistrarComponent",
         data: ()=>({
             datosPersonales: true,
-            datosIntraOperatorio: true,
-            datosPostOperatorio: false,
+            
         }),
-        components:{ DatosPersonalesForm, DatosIntraOperatoriosForm, DatosPostOperatoriosForm},
+        components:{ DatosPersonalesForm,},
     }
 </script>
