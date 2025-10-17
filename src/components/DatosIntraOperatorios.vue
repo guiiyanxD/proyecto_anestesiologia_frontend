@@ -71,7 +71,6 @@
                 </div>
             </div>    
         </div>
-
         <div class="row mt-3">
             <div class=" text-primary">
                 <h4>Tiempo quirurgico</h4>
@@ -91,7 +90,6 @@
                 </div>
             </div>    
         </div> 
-        
         <div class="row mt-3">
             <div class=" text-primary">
                 <h4>Eventos Intra Operatorios</h4>
@@ -153,7 +151,7 @@
                     <label class="form-check-label" for="checkFR">
                         Frecuencia respiratoria (FR)
                     </label>
-                    <div v-if="this.data.frecuenciaRespiratorias === true" class="form-floating mt-2">
+                    <div v-if="this.data.frecuenciaRespiratoria === true" class="form-floating mt-2">
                         <input type="text" name="valorFR" class="form-control" v-model="data.valorFR" placeholder="Valor de FR">
                         <label for="valorFR">Valor frecuencia respiratoria</label>
                     </div>
