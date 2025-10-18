@@ -4,6 +4,10 @@
 
 <script>
  export default {
-    name: "perfilComponent"
+    name: "perfilComponent",
+    mounted() {
+        const id = this.$route.params.id;
+        console.log("ID del usuario:", id);
+    }
  }
 </script>

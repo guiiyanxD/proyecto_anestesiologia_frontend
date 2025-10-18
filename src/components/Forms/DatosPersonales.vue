@@ -170,8 +170,7 @@
                     tipoCirugia: this.data.tipoCirugia,
                     otraCirugia: this.data.otraCirugia
                 };
-                console.log(JSON.stringify(dataToSave));
-                /*fetch('/api/guardarDatosPersonales', {
+                fetch('/api/saveDatosPersonales', {
                     method: 'POST',
                     headers: {
                        "Content-Type": "application/json"
@@ -187,7 +186,7 @@
                 .catch((error) => {
                     alert('Errores: '+ error);
                 });
-                */
+                
 
             },
         }
