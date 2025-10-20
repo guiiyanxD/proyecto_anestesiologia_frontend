@@ -8,13 +8,13 @@
         <div class="row mt-3">
             <div class="col lg-6">
                 <div class="form-floating">
-                    <input type="date" class="form-control" v-model="data.fechaNacimiento" required>
+                    <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control" v-model="data.fechaNacimiento" required>
                     <label for="fechaNacimiento">Fecha de nacimiento</label>
                 </div>
             </div>
             <div class="col lg-6">
                 <div class="form-floating">
-                    <input type="date" id="fechaCirugia" class="form-control" v-model="data.fechaCirugia" placeholder="Ingrese sus apellidos" @change="calculoEdad()" required>
+                    <input type="date" name="fechaCirugia" id="fechaCirugia" class="form-control" v-model="data.fechaCirugia" placeholder="Ingrese sus apellidos" @change="calculoEdad()" required>
                     <label for="fechaCirugia">Fecha de la cirugia</label>
                 </div>
             </div>    
@@ -69,16 +69,16 @@
                 <div class="form-floating">
                     <p class="m-1" style="align-items: start;">Clasificacion ASA:</p>
                     <div class="form-check-inline">
-                        <input type="radio" name="asa" id="asa I" class="form-check-input" v-model="data.asa" value="Asa I" required>
-                        <label for="asa1" class="form-check-label">ASA I</label>
+                        <input type="radio" name="asa" id="asaI" class="form-check-input" v-model="data.asa" value="Asa I" required>
+                        <label for="asaI" class="form-check-label">ASA I</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="asa" id="asa II" class="form-check-input" v-model="data.asa" value="Asa II" required>
-                        <label for="asa2" class="form-check-label">ASA II</label>
+                        <input type="radio" name="asa" id="asaII" class="form-check-input" v-model="data.asa" value="Asa II" required>
+                        <label for="asaII" class="form-check-label">ASA II</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="asa" id="asa III" class="form-check-input" v-model="data.asa" value="Asa III" required>
-                        <label for="asa3" class="form-check-label">ASA III</label>
+                        <input type="radio" name="asa" id="asaIII" class="form-check-input" v-model="data.asa" value="Asa III" required>
+                        <label for="asaIII" class="form-check-label">ASA III</label>
                     </div>
                 </div>
             </div>
@@ -115,10 +115,22 @@
        </div>
         <div class="row mt-3">
             <div class="col-lg-6 d-grid mt-2">
-               <button class="btn btn-success" @click="save">Guardar</button>               
+               <button 
+                    type="submit" 
+                    class="btn btn-success" 
+                    :disabled="isLoading" 
+                >
+                    <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    {{ isLoading ? ' Guardando...' : 'Guardar' }}
+                </button>               
             </div>
             <div class="col-lg-6 d-grid mt-1">
-               <button class="btn btn-secondary">Salir</button>               
+               <button 
+                    class="btn btn-secondary"
+                    :disabled="isLoading" 
+                >
+                    Salir
+                </button>              
             </div>
         </div>
        
@@ -131,6 +143,7 @@
         data: ()=>({
             data:{},
             imc:0,
+            isLoading: false,
         }),
         computed:{
         },
@@ -157,7 +170,8 @@
                 }
                 this.data.edad = edad;
             },
-            save(){
+            async  save(){
+                this.isLoading = true;
                 const dataToSave = {
                     fechaNacimiento: this.data.fechaNacimiento,
                     fechaCirugia: this.data.fechaCirugia,
@@ -168,26 +182,37 @@
                     imc: this.imc,
                     asa: this.data.asa,
                     tipoCirugia: this.data.tipoCirugia,
-                    otraCirugia: this.data.otraCirugia
+                    otraCirugia: this.data.otraCirugia ?? ""
                 };
-                fetch('/api/saveDatosPersonales', {
-                    method: 'POST',
-                    headers: {
-                       "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(dataToSave)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if(data.status === 'failed'){
-                        alert('Estos datos ya existen: '+ data.message);
-                    }
-                })
-                .catch((error) => {
-                    alert('Errores: '+ error);
-                });
-                
 
+                try{
+                    const response = await fetch('/api/saveDatosPersonales', {
+                        method: 'POST',
+                        headers: {
+                        "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(dataToSave)
+                    });
+
+                    const data = await response.json();
+                    console.log(response);
+                    if(!response.ok){
+                        throw new Error(`Error en la solicitud: `)
+                    }
+
+                    if(data.status === 'failed'){
+                        alert("Error al cargar los datos" + data.message);
+                    }else{
+                        console.log("el id de retorno es: " + data['data']);
+                        alert('¡Datos guardados con éxito!');
+                    }
+                }catch(error){
+                    console.error('Error al guardar datos:', error);
+                    alert('Error al guardar los datos. Inténtelo de nuevo. Detalles: '+ error.message);
+                }finally{
+                    this.isLoading = false;
+                    this.$
+                }
             },
         }
     }

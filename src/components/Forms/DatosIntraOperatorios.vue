@@ -98,7 +98,7 @@
         <div class="col lg-12">
             <div class="row">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="checkPresionArterial" v-model="data.presionArterial">
+                    <input class="form-check-input" type="checkbox" id="checkPresionArterial" v-model="data.presionArterial" value=1>
                     <label class="form-check-label" for="checkPresionArterial">
                         Presion arterial (PA)
                     </label>
@@ -111,7 +111,7 @@
 
             <div class="row">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkFrecuenciaCardiaca" v-model="data.frecuenciaCardiaca">
+                    <input class="form-check-input" type="checkbox" value=1 id="checkFrecuenciaCardiaca" v-model="data.frecuenciaCardiaca">
                     <label class="form-check-label" for="checkFrecuenciaCardiaca">
                         Frecuencia cardiaca (FC)
                     </label>
@@ -123,7 +123,7 @@
             </div>
             <div class="row">
                     <div class="form-check">
-                         <input class="form-check-input" type="checkbox" value="" id="checkCo2" v-model="data.co2">
+                         <input class="form-check-input" type="checkbox" value=1 id="checkCo2" v-model="data.co2">
                         <label class="form-check-label" for="checkCo2">
                             Co2
                     </label>
@@ -135,7 +135,7 @@
             </div>    
             <div class="row">
                 <div class="form-check">
-                     <input class="form-check-input" type="checkbox" value="" id="checkSatO2" v-model="data.satO2">
+                     <input class="form-check-input" type="checkbox" value=1 id="checkSatO2" v-model="data.satO2">
                     <label class="form-check-label" for="checkSatO2">
                         Saturacion O2
                     </label>
@@ -147,7 +147,7 @@
             </div>    
             <div class="row">
                 <div class="form-check">
-                     <input class="form-check-input" type="checkbox" value="" id="checkFR" v-model="data.frecuenciaRespiratoria">
+                     <input class="form-check-input" type="checkbox" value=1 id="checkFR" v-model="data.frecuenciaRespiratoria">
                     <label class="form-check-label" for="checkFR">
                         Frecuencia respiratoria (FR)
                     </label>
@@ -175,7 +175,37 @@
     export default {
         name: "DatosIntraOperatoriosForm",
         data: () => ({
-            data: {},
+            data: {
+            induccionPropofol: this.induccionPropofol,
+            induccionDexmedetomidina: this.induccionDexmedetomidina,
+            induccionLidocaina: this.induccionLidocaina,
+            induccionKetamina: this.induccionKetamina,
+            
+            mantenimientoPropofol: this.mantenimientoPropofol,
+            mantenimientoDexmedetomidina: this.mantenimientoDexmedetomidina,
+            mantenimientoLidocaina: this.mantenimientoLidocaina,
+            mantenimientoKetamina: this.mantenimientoKetamina,
+
+            despertar: this.despertar,
+            tiempoQx: this.tiempoQx,
+
+            presionArterial: this.presionArterial ?? 0,
+            valorPresionArterial: this.presionArterial != 0 ? this.valorPresionArterial : "",
+
+            frecuenciaCardiaca : this.frecuenciaCardiaca ?? 0,
+            valorFrecuenciaCardiaca: this.frecuenciaCardiaca != 0 ? this.valorFrecuenciaCardiaca : "",
+
+            frecuenciaRespiratoria : this.frecuenciaRespiratoria ?? 0,
+            valorFrecuenciaRespiratoria: this.frecuenciaRespiratoria != 0 ? this.valorFrecuenciaRespiratoria : "",
+
+            co2 : this.co2 ?? 0,
+            valorCo2 : this.co2 != 0 ? this.valorCo2 : "",
+
+            satO2 : this.satO2 ?? 0 ,
+            valorSatO2 : this.satO2 != 0 ? this.valorSatO2 : "",
+
+
+       },
             
         }),
     }

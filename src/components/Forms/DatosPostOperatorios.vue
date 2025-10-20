@@ -46,7 +46,7 @@
                         <label for="nauseas" class="form-check-label">Si</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="nauseasVomitos" id="vomitos" class="form-check-input" v-model="data.nauseasVomitos" value="vomitos" checked>
+                        <input type="radio" name="nauseasVomitos" id="vomitos" class="form-check-input" v-model="data.nauseasVomitos" value="vomitos">
                         <label for="vomitos" class="form-check-label">No</label>
                     </div>
                 </div>
@@ -55,15 +55,15 @@
                 <div class="form-floating" >
                     <p class="m-1" >Consumo de analgesico de rescate</p>
                     <div class="form-check-inline">
-                        <input type="radio" name="consumoAnalgesico" id="siConsumo" class="form-check-input" v-model="data.consumoAnalgesico" value="si" >
+                        <input type="radio" name="consumoAnalgesico" id="siConsumo" class="form-check-input" v-model="data.consumoAnalgesico" value=1 >
                         <label for="siConsumo" class="form-check-label">Si</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="consumoAnalgesico" id="noConsumo" class="form-check-input" v-model="data.consumoAnalgesico" value="no" checked>
+                        <input type="radio" name="consumoAnalgesico" id="noConsumo" class="form-check-input" v-model="data.consumoAnalgesico" value=0 checked>
                         <label for="noConsumo" class="form-check-label">No</label>
                     </div>
                 </div>
-                <div v-if="data.consumoAnalgesico === 'si'">
+                <div v-if="data.consumoAnalgesico === 1">
                     <div class="form-floating mt-3">
                         <textarea name="tipoAnalgesico" id="tipoAnalgesico" cols="30" rows="3" class="form-control" v-model="data.tipoAnalgesico"></textarea>
                         <label for="tipoAnalgesico">Tipo de Analgesico</label>
@@ -74,15 +74,15 @@
                 <div class="form-floating" >
                     <p class="m-1" >Depresion respiratoria</p>
                     <div class="form-check-inline">
-                        <input type="radio" name="depresionRespiratoria" id="siDepresion" class="form-check-input" v-model="data.depresionRespiratoria" value="si" >
+                        <input type="radio" name="depresionRespiratoria" id="siDepresion" class="form-check-input" v-model="data.depresionRespiratoria" value=1 >
                         <label for="siDepresion" class="form-check-label">Si</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="depresionRespiratoria" id="noDepresion" class="form-check-input" v-model="data.depresionRespiratoria" value="no" checked>
+                        <input type="radio" name="depresionRespiratoria" id="noDepresion" class="form-check-input" v-model="data.depresionRespiratoria" value=0 checked>
                         <label for="noDepresion" class="form-check-label">No</label>
                     </div>
                 </div>
-                <div v-if="data.depresionRespiratoria === 'si'">
+                <div v-if="data.depresionRespiratoria === 1">
                     <div class="form-floating mt-3">
                         <textarea name="spo2Bajo" id="spo2Bajo" cols="30" rows="3" class="form-control" v-model="data.spo2Bajo"></textarea>
                         <label for="spo2Bajo">Saturación de Oxígeno mas bajo</label>
@@ -97,7 +97,21 @@
     export default {
         name: "DatosPostOperatoriosForm",
         data: () => ({
-            data: {},
+            data: {
+                recuperacionPostAnestesica: this.recuperacionPostAnestesica,
+                ramsay : this.ramsay,
+                evaIngreso : this.evaIngreso,
+                eva1hr : this.eva1hr,
+                nauseas : this.nauseas ?? 0,
+                vomitos : this.vomitos ?? 0,
+                
+                consumoAnalgesico : this.consumoAnalgesico ?? 0,
+                tipoAnalgesico: this.consumoAnalgesico != 0 ? this.tipoAnalgesico : "",
+
+                depresionRespiratoria : this.depresionRespiratoria ?? 0,
+                spo2Bajo : this.depresionRespiratoria != 0 ? spo2Bajo : "",
+
+            },
             
         }),
     }
