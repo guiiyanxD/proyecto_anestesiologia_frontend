@@ -195,7 +195,6 @@
                     });
 
                     const data = await response.json();
-                    console.log(response);
                     if(!response.ok){
                         throw new Error(`Error en la solicitud: `)
                     }
@@ -203,15 +202,20 @@
                     if(data.status === 'failed'){
                         alert("Error al cargar los datos" + data.message);
                     }else{
-                        console.log("el id de retorno es: " + data['data']);
-                        alert('¡Datos guardados con éxito!');
+                        //alert("El id es: " + data.data);
+                        this.$router.push({
+                            name: "perfil", 
+                            params:{
+                                userId: data.data,
+                            }
+                        });
                     }
                 }catch(error){
                     console.error('Error al guardar datos:', error);
                     alert('Error al guardar los datos. Inténtelo de nuevo. Detalles: '+ error.message);
                 }finally{
                     this.isLoading = false;
-                    this.$
+                    this.data = {};
                 }
             },
         }
