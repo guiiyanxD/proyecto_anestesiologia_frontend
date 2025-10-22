@@ -176,7 +176,15 @@
         name: "DatosIntraOperatoriosForm",
         data: () => ({
             data: {
-            induccionPropofol: this.induccionPropofol,
+            
+
+       },
+            
+        }),
+    }
+
+    /* 
+    induccionPropofol: this.induccionPropofol,
             induccionDexmedetomidina: this.induccionDexmedetomidina,
             induccionLidocaina: this.induccionLidocaina,
             induccionKetamina: this.induccionKetamina,
@@ -204,9 +212,5 @@
             satO2 : this.satO2 ?? 0 ,
             valorSatO2 : this.satO2 != 0 ? this.valorSatO2 : "",
 
-
-       },
-            
-        }),
-    }
+    */
 </script>

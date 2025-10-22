@@ -88,10 +88,7 @@
         class="accordion-collapse collapse show"
       >
         <div class="accordion-body">
-          <dl class="row">
-            <dt class="col-sm-4">Fecha de Nacimiento:</dt>
-            <dd class="col-sm-8">{{ userData.fechaNacimiento }}</dd>
-          </dl>
+          <button @click="registraDIO">Registrar Datos Intra Operatorios</button>
         </div>
       </div>
     </div>
@@ -168,6 +165,9 @@ export default {
         this.isLoading = false;
       }
     },
+    registraDIO() {
+      this.$router.push({ name: 'RegistrarDatosIOView', params: { userId: this.userId } });
+    }
   },
 };
 </script>
