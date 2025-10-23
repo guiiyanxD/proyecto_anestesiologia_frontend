@@ -130,7 +130,6 @@ export default {
   }),
   mounted() {
     this.userId = this.$route.params.userId;
-    console.log("ID del usuario:", this.userId);
   },
   created() {
     this.fetchUserData();
@@ -166,7 +165,12 @@ export default {
       }
     },
     registraDIO() {
-      this.$router.push({ name: 'RegistrarDatosIOView', params: { userId: this.userId } });
+      this.$router.push({ 
+        name: 'formDIO', 
+        params: { 
+          userId: this.userId 
+        } 
+      });
     }
   },
 };

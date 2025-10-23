@@ -1,8 +1,9 @@
 <template>
-    <form action="">
+    <form v-on:submit.prevent="save">
         <div class="row mt-3 mb-0">
             <div class="text-center text-primary">
                 <h4>Datos Intra Operatorios</h4>
+                <p>Este es el id heradado: {{ userId }}</p>
             </div>
         </div>
         <div class="row">
@@ -162,7 +163,7 @@
 
        <div class="row mt-3">
             <div class="col-lg-6 d-grid mt-2">
-               <button class="btn btn-success" @click="save">Guardar</button>               
+               <button class="btn btn-success" type="submit">Guardar</button>               
             </div>
             <div class="col-lg-6 d-grid mt-1">
                <button class="btn btn-secondary">Salir</button>               
@@ -176,11 +177,74 @@
         name: "DatosIntraOperatoriosForm",
         data: () => ({
             data: {
-            
-
-       },
-            
+                userId: "",
+                induccionPropofol: 0,
+                induccionDexmedetomidina: 0,
+                induccionLidocaina: 0,
+                induccionKetamina: 0,
+                mantenimientoPropofol: 0,
+                mantenimientoDexmedetomidina: 0,
+                mantenimientoLidocaina: 0,
+                mantenimientoKetamina: 0,
+                despertar: 0,
+                tiempoQx: 0,
+                presionArterial: false,
+                valorPresionArterial: "",
+                frecuenciaCardiaca: false,
+                valorFrecuenciaCardiaca: "",
+                frecuenciaRespiratoria: false,
+                valorFrecuenciaRespiratoria: "",
+                co2: false,
+                valorCo2: "",
+                satO2: false,
+                valorSatO2: "",
+            },
+            isLoading: false,
         }),
+        props: {
+            userId: {
+                type: String,
+                required: true,
+            },
+        },
+        methods:{
+            async  save(){
+                this.isLoading = true;
+                this.data.userId = this.userId;
+                try{
+                    const response = await fetch('/api/saveDatosIntraOperatorios', {
+                        method: 'POST',
+                        headers: {
+                        "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(this.data)
+                    });
+
+                    const data = await response.json();
+                    if(!response.ok){
+                        throw new Error(`Error en la solicitud: `)
+                    }
+
+                    if(data.status === 'failed'){
+                        alert("Error al cargar los datos" + data.message);
+                    }else{
+                        //alert("El id es: " + data.data);
+                        /*this.$router.push({
+                            name: "perfil", 
+                            params:{
+                                userId: data.data,
+                            }
+                        });*/
+                    }
+                }catch(error){
+                    console.error('Error al guardar datos:', error);
+                    alert('Error al guardar los datos. Inténtelo de nuevo. Detalles: '+ error.message);
+                }finally{
+                    this.isLoading = false;
+                    //this.data = {};
+                }
+            },
+        }
     }
 
     /* 

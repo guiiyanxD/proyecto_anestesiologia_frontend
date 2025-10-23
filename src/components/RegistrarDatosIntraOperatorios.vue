@@ -2,21 +2,26 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2>Registrar Datos Intra Operatorios para Usuario ID:</h2>
-                <p> {{ userId }}</p>
+                <datos-intra-operatorios-form 
+                    :userId="userId">
+                </datos-intra-operatorios-form>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import DatosIntraOperatoriosForm from './Forms/DatosIntraOperatorios.vue';
  export default {
-     name: 'RegistrarDatosIntraOperatorios',
-     data: () => ({
-        userId: null,
-     }),
-     mounted() {
-        this.userId = this.$route.params.userId;
-     }
+    name: 'RegistrarDatosIntraOperatorios',
+    data: () => ({
+       userId: null,
+    }),
+    mounted() {
+       this.userId = this.$route.params.userId;
+    },
+    components: {
+       DatosIntraOperatoriosForm,
+    },
  }
 </script>
