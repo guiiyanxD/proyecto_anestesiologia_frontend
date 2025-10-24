@@ -110,10 +110,7 @@
         class="accordion-collapse collapse show"
       >
         <div class="accordion-body">
-          <dl class="row">
-            <dt class="col-sm-4">Fecha de Nacimiento:</dt>
-            <dd class="col-sm-8">{{ userData.fechaNacimiento }}</dd>
-          </dl>
+          <button class="btn btn-primary" @click="registraDPO">Registrar Datos Post Operatorios</button>
         </div>
       </div>
     </div>
@@ -171,7 +168,15 @@ export default {
           userId: this.userId 
         } 
       });
-    }
+    },
+    registraDPO() {
+      this.$router.push({ 
+        name: 'formDPO', 
+        params: { 
+          userId: this.userId 
+        } 
+      });
+    },
   },
 };
 </script>

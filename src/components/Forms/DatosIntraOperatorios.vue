@@ -228,53 +228,21 @@
                     if(data.status === 'failed'){
                         alert("Error al cargar los datos" + data.message);
                     }else{
-                        //alert("El id es: " + data.data);
-                        /*this.$router.push({
+                        this.$router.push({
                             name: "perfil", 
                             params:{
                                 userId: data.data,
                             }
-                        });*/
+                        });
                     }
                 }catch(error){
                     console.error('Error al guardar datos:', error);
                     alert('Error al guardar los datos. Inténtelo de nuevo. Detalles: '+ error.message);
                 }finally{
                     this.isLoading = false;
-                    //this.data = {};
+                    this.data = {};
                 }
             },
         }
     }
-
-    /* 
-    induccionPropofol: this.induccionPropofol,
-            induccionDexmedetomidina: this.induccionDexmedetomidina,
-            induccionLidocaina: this.induccionLidocaina,
-            induccionKetamina: this.induccionKetamina,
-            
-            mantenimientoPropofol: this.mantenimientoPropofol,
-            mantenimientoDexmedetomidina: this.mantenimientoDexmedetomidina,
-            mantenimientoLidocaina: this.mantenimientoLidocaina,
-            mantenimientoKetamina: this.mantenimientoKetamina,
-
-            despertar: this.despertar,
-            tiempoQx: this.tiempoQx,
-
-            presionArterial: this.presionArterial ?? 0,
-            valorPresionArterial: this.presionArterial != 0 ? this.valorPresionArterial : "",
-
-            frecuenciaCardiaca : this.frecuenciaCardiaca ?? 0,
-            valorFrecuenciaCardiaca: this.frecuenciaCardiaca != 0 ? this.valorFrecuenciaCardiaca : "",
-
-            frecuenciaRespiratoria : this.frecuenciaRespiratoria ?? 0,
-            valorFrecuenciaRespiratoria: this.frecuenciaRespiratoria != 0 ? this.valorFrecuenciaRespiratoria : "",
-
-            co2 : this.co2 ?? 0,
-            valorCo2 : this.co2 != 0 ? this.valorCo2 : "",
-
-            satO2 : this.satO2 ?? 0 ,
-            valorSatO2 : this.satO2 != 0 ? this.valorSatO2 : "",
-
-    */
 </script>

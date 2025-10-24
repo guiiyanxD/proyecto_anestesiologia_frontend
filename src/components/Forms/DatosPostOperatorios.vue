@@ -1,5 +1,10 @@
 <template>
-    <form action="">
+    <form v-on:submit.prevent="save">
+        <div class="row">
+            <div class="text-center text-primary">
+                <h4>Datos Post Operatorios {{ userId }}</h4>
+            </div>
+        </div>
         <div class="row">
             <div class="text-center text-primary">
                 <h4>Datos Post Operatorios</h4>
@@ -42,12 +47,12 @@
                 <div class="form-floating" >
                     <p class="m-1" >Nauseas y vomitos</p>
                     <div class="form-check-inline">
-                        <input type="radio" name="nauseasVomitos" id="nauseas" class="form-check-input" v-model="data.nauseasVomitos" value="nauseas" >
-                        <label for="nauseas" class="form-check-label">Si</label>
+                        <input type="checkbox" name="nauseasVomitos" id="nauseas" class="form-check-input" v-model="data.nauseas" value="1" >
+                        <label for="nauseas" class="form-check-label">Nauseas</label>
                     </div>
                     <div class="form-check-inline">
-                        <input type="radio" name="nauseasVomitos" id="vomitos" class="form-check-input" v-model="data.nauseasVomitos" value="vomitos">
-                        <label for="vomitos" class="form-check-label">No</label>
+                        <input type="checkbox" name="nauseasVomitos" id="vomitos" class="form-check-input" v-model="data.vomitos" value="1">
+                        <label for="vomitos" class="form-check-label">Vomitos</label>
                     </div>
                 </div>
             </div>
@@ -90,6 +95,16 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="row mt-3">
+            <div class="col-lg-6 d-grid mt-2">
+               <button class="btn btn-success" type="submit">Guardar</button>               
+            </div>
+            <div class="col-lg-6 d-grid mt-1">
+               <button class="btn btn-secondary">Salir</button>               
+            </div>
+       </div>
     </form>
 </template>
 
@@ -98,21 +113,35 @@
         name: "DatosPostOperatoriosForm",
         data: () => ({
             data: {
-                recuperacionPostAnestesica: this.recuperacionPostAnestesica,
-                ramsay : this.ramsay,
-                evaIngreso : this.evaIngreso,
-                eva1hr : this.eva1hr,
-                nauseas : this.nauseas ?? 0,
-                vomitos : this.vomitos ?? 0,
-                
-                consumoAnalgesico : this.consumoAnalgesico ?? 0,
-                tipoAnalgesico: this.consumoAnalgesico != 0 ? this.tipoAnalgesico : "",
-
-                depresionRespiratoria : this.depresionRespiratoria ?? 0,
-                spo2Bajo : this.depresionRespiratoria != 0 ? spo2Bajo : "",
-
+                userId: "",
             },
             
         }),
+        props: {
+            userId: {
+                type: String,
+                required: true,
+            },
+        },
+        methods: {
+          save(){
+            return true;
+          }  
+        },
     }
+
+    /*
+    recuperacionPostAnestesica: "",
+                ramsay : "",
+                evaIngreso : 0,
+                eva1hr : 0,
+                nauseas : 0,
+                vomitos : 0,
+
+                consumoAnalgesico : 0,
+                tipoAnalgesico:  "",
+
+                depresionRespiratoria :  0,
+                spo2Bajo : "",
+    */
 </script>
