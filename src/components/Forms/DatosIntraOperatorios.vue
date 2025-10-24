@@ -160,7 +160,6 @@
             </div>        
         </div> 
         
-
        <div class="row mt-3">
             <div class="col-lg-6 d-grid mt-2">
                <button class="btn btn-success" type="submit">Guardar</button>               
