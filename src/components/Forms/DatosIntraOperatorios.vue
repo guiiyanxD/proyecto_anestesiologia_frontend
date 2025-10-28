@@ -162,12 +162,24 @@
         
        <div class="row mt-3">
             <div class="col-lg-6 d-grid mt-2">
-               <button class="btn btn-success" type="submit">Guardar</button>               
+               <button 
+                    type="submit" 
+                    class="btn btn-success" 
+                    :disabled="isLoading" 
+                >
+                    <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    {{ isLoading ? ' Guardando...' : 'Guardar' }}
+                </button>               
             </div>
             <div class="col-lg-6 d-grid mt-1">
-               <button class="btn btn-secondary">Salir</button>               
+               <button 
+                    class="btn btn-secondary"
+                    :disabled="isLoading" 
+                >
+                    Salir
+                </button>              
             </div>
-       </div>
+        </div>
     </form>
 </template> 
 
