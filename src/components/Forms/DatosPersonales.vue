@@ -173,16 +173,16 @@
             async  save(){
                 this.isLoading = true;
                 const dataToSave = {
-                    fechaNacimiento: this.data.fechaNacimiento,
-                    fechaCirugia: this.data.fechaCirugia,
+                    fechanacimiento: this.data.fechaNacimiento,
+                    fechacirugia: this.data.fechaCirugia,
                     genero: this.data.genero,
                     edad: this.data.edad,
                     peso: this.data.peso,
                     talla: this.data.talla,
                     imc: this.imc,
                     asa: this.data.asa,
-                    tipoCirugia: this.data.tipoCirugia,
-                    otraCirugia: this.data.otraCirugia ?? ""
+                    tipocirugia: this.data.tipoCirugia,
+                    otracirugia: this.data.otraCirugia ?? ""
                 };
 
                 try{

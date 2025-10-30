@@ -34,10 +34,10 @@
         <div class="accordion-body">
           <dl class="row">
             <dt class="col-sm-4">Fecha de Nacimiento:</dt>
-            <dd class="col-sm-8">{{ userData.fechaNacimiento }}</dd>
+            <dd class="col-sm-8">{{ userData.fechanacimiento }}</dd>
 
             <dt class="col-sm-4">Fecha de Cirugía:</dt>
-            <dd class="col-sm-8">{{ userData.fechaCirugia }}</dd>
+            <dd class="col-sm-8">{{ userData.fechacirugia }}</dd>
 
             <dt class="col-sm-4">Género:</dt>
             <dd class="col-sm-8">{{ userData.genero }}</dd>
@@ -57,13 +57,13 @@
             <dd class="col-sm-8">{{ userData.asa }}</dd>
 
             <dt class="col-sm-4">Tipo de Cirugía:</dt>
-            <dd class="col-sm-8">{{ userData.tipoCirugia }}</dd>
+            <dd class="col-sm-8">{{ userData.tipocirugia }}</dd>
 
             <dt v-if="userData.tipoCirugia === 'otro'" class="col-sm-4">
               Otra Cirugía:
             </dt>
             <dd v-if="userData.tipoCirugia === 'otro'" class="col-sm-8">
-              {{ userData.otraCirugia }}
+              {{ userData.otracirugia }}
             </dd>
           </dl>
           <button class="btn " style="color: aliceblue;background-color: rebeccapurple">Editar</button>
