@@ -45,7 +45,9 @@ export default {
   text-align: start;
   color: #2c3e50;
 }
-
+body{
+  background-color: #f8f6f7;
+}
 nav {
   padding: 30px;
 }
