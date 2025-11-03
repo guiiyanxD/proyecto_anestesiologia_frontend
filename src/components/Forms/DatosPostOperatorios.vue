@@ -126,10 +126,10 @@
         data: () => ({
             data: {
                 userId: "",
-                recuperacionPostAnestesia: " ", 
-                ramsay : "",
-                evaIngreso : "",
-                eva1hr : "",
+                recuperacionPostAnestesia: 0, 
+                ramsay : 0,
+                evaIngreso : 0,
+                eva1hr : 0,
                 nauseas : false,
                 vomitos : false,
                 consumoAnalgesico : false,
