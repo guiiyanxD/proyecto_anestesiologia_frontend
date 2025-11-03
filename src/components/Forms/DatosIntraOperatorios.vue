@@ -153,7 +153,7 @@
                         Frecuencia respiratoria (FR)
                     </label>
                     <div v-if="this.data.frecuenciaRespiratoria === true" class="form-floating mt-2">
-                        <input type="text" name="valorFR" class="form-control" v-model="data.valorFR" placeholder="Valor de FR">
+                        <input type="text" name="valorFR" class="form-control" v-model="data.valorFrecuenciaRespiratoria" placeholder="Valor de FR">
                         <label for="valorFR">Valor frecuencia respiratoria</label>
                     </div>
                 </div>
