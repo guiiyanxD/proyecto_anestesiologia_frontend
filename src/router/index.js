@@ -4,6 +4,7 @@ import RegistrarView from '@/views/RegistrarView.vue'
 import PerfilView from '@/views/PerfilView.vue'
 import RegistrarDatosIOView from '@/views/RegistrarDatosIOView.vue'
 import RegistrarDatosPOView from '@/views/RegistrarDatosPOView.vue'
+import TodosRegistrosView from '@/views/TodosRegistrosView.vue'
 
 const routes = [
   {
@@ -15,6 +16,11 @@ const routes = [
     path: '/registrar',
     name: 'registrar',
     component: RegistrarView
+  },
+  {
+    path: '/pacientes',
+    name: 'pacientes',
+    component: TodosRegistrosView
   },
   {
     path: '/perfil/:userId',

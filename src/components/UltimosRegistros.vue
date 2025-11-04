@@ -150,7 +150,6 @@ export default {
         });
     },
     verTodos() {
-      // Navegar a la página con todos los registros
       this.$router.push('/pacientes');
     }
   }
