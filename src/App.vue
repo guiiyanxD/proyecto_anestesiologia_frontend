@@ -2,17 +2,15 @@
 
   <nav class="navbar navbar-expand-lg bg-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand " href="#" >Dra. Cecilia Diaz Pedraza </a>
+    <a class="navbar-brand " href="#" ><router-link to="/" style="text-decoration: none;">Dra. Cecilia Diaz Pedraza </router-link></a>
     <button id="buttonToggler" class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon" ></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" ><router-link to="/" style="text-decoration: none;">Welcome</router-link></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link"  ><router-link to="/registrar" style="text-decoration: none;">Registrar</router-link></a>
+          <a class="nav-link"><router-link to="/pacientes" style="text-decoration: none;">Ver todos los registros</router-link></a>
         </li>
         
       </ul>
