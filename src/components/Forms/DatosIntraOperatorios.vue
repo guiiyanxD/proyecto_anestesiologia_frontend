@@ -172,13 +172,13 @@
                 </button>               
             </div>
             <div class="col-lg-6 d-grid mt-1">
-               <button 
+               <a
                     @click="salir"
                     class="btn btn-secondary"
                     :disabled="isLoading" 
                 >
                     Salir
-                </button>              
+                </a>              
             </div>
         </div>
     </form>
