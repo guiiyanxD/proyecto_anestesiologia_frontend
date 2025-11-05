@@ -184,6 +184,7 @@
 </template> 
 
 <script>
+import API_BASE_URL from '../config.js/api';
     export default {
         name: "DatosIntraOperatoriosForm",
         data: () => ({
@@ -223,7 +224,7 @@
                 this.isLoading = true;
                 this.data.userId = this.userId;
                 try{
-                    const response = await fetch('/api/saveDatosIntraOperatorios', {
+                    const response = await fetch(`${API_BASE_URL}/saveDatosIntraOperatorios`, {
                         method: 'POST',
                         headers: {
                         "Content-Type": "application/json"

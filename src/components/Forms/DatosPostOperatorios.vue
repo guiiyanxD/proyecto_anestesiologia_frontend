@@ -121,6 +121,7 @@
 </template>
 
 <script>
+import API_BASE_URL from '../config.js/api';
     export default {
         name: "DatosPostOperatoriosForm",
         data: () => ({
@@ -150,7 +151,8 @@
                 this.isLoading = true;
                 this.data.userId = this.userId;
                 try{
-                    const response = await fetch('/api/saveDatosPostOperatorios', {
+                    const response = await fetch(`${API_BASE_URL}/saveDatosPostOperatorios`, {
+                    //const response = await fetch('/api/saveDatosPostOperatorios', {
                         method: 'POST',
                         headers: {
                         "Content-Type": "application/json"

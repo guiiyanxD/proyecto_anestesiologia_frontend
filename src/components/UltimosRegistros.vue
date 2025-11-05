@@ -82,6 +82,7 @@
 </template>
 
 <script>
+import API_BASE_URL from './config.js/api';
 export default {
   name: 'UltimosRegistros',
   data() {
@@ -97,7 +98,7 @@ export default {
     async cargarUltimosRegistros() {
       this.isLoading = true;
       try {
-        const response = await fetch('/api/getUltimosRegistros', {
+        const response = await fetch(`${API_BASE_URL}/getUltimosRegistros`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'

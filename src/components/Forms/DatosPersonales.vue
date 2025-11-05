@@ -138,6 +138,7 @@
 </template>
 
 <script>
+import API_BASE_URL from '../config.js/api';
     export default {
         name:"DatosPersonalesForm",
         data: ()=>({
@@ -186,7 +187,8 @@
                 };
 
                 try{
-                    const response = await fetch('/api/saveDatosPersonales', {
+                    //const response = await fetch('/api/saveDatosPersonales', {
+                    const response = await fetch(`${API_BASE_URL}/saveDatosPersonales`, {
                         method: 'POST',
                         headers: {
                         "Content-Type": "application/json"

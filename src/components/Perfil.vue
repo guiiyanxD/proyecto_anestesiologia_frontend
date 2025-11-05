@@ -390,6 +390,7 @@
 </div>
 </template>
 <script>
+import API_BASE_URL from './config.js/api';
 export default {
   name: "perfilComponent",
   data: () => ({
@@ -422,7 +423,7 @@ export default {
     async fetchUserData() {
       this.isLoading = true;
       try {
-        const response = await fetch('/api/user', {
+        const response = await fetch(`${API_BASE_URL}/user`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

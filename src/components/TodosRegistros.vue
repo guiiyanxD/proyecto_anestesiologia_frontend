@@ -160,6 +160,7 @@
 </template>
 
 <script>
+import API_BASE_URL from './config.js/api';
 export default {
   name: 'TodosRegistros',
   data() {
@@ -232,7 +233,7 @@ export default {
     async cargarTodosRegistros() {
       this.isLoading = true;
       try {
-        const response = await fetch('/api/ver-todo', {
+        const response = await fetch(`${API_BASE_URL}/ver-todo`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
