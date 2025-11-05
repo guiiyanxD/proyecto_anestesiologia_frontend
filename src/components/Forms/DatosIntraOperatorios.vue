@@ -173,6 +173,7 @@
             </div>
             <div class="col-lg-6 d-grid mt-1">
                <button 
+                    @click="salir"
                     class="btn btn-secondary"
                     :disabled="isLoading" 
                 >
@@ -255,6 +256,9 @@ import API_BASE_URL from '../config.js/api';
                     this.data = {};
                 }
             },
+            salir(){
+                this.$router.back();
+            }
         }
     }
 </script>
