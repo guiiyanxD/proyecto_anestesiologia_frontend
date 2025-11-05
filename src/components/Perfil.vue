@@ -68,9 +68,9 @@
             <dd class="col-sm-8">{{ userData.otracirugia }}</dd>
           </template>
         </dl>
-        <button class="btn" style="color: aliceblue; background-color: rebeccapurple">
+        <!-- <button class="btn" style="color: aliceblue; background-color: rebeccapurple">
           Editar
-        </button>
+        </button> -->
       </div>
     </div>
   </div>
@@ -237,10 +237,10 @@
         </div>
 
         <div class="mt-4">
-          <button class="btn" style="color: aliceblue; background-color: rebeccapurple">
+          <!-- <button class="btn" style="color: aliceblue; background-color: rebeccapurple">
             Editar
-          </button>
-        </div>
+          </button> -->
+        </div> 
       </div>
     </div>
   </div>
@@ -379,9 +379,9 @@
         </div>
 
         <div class="mt-4">
-          <button class="btn" style="color: aliceblue; background-color: rebeccapurple">
+          <!-- <button class="btn" style="color: aliceblue; background-color: rebeccapurple">
             Editar
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
