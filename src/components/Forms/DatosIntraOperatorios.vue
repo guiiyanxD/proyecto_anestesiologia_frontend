@@ -12,99 +12,111 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col col-lg-5">
                 <div class="row">
                     <div class="text-primary">
-                        <p style="color:crimson">Presion Arterial (mmHg)</p>
+                        <p style="color:crimson">Presion Arterial (PA)</p>
                     </div>
                 </div>
-                <div class="col lg-3">
-                    <label for="pasistolica">Inicio</label>
+                <div class="col col-lg-12">
+                    <label for="pasistolica_ini">Inicio</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
+                        <input type="number" class="form-control" name="pasistolica_ini" placeholder="Sistolica Inicial" aria-label="pasistolica_ini">
                         <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
+                        <input type="number" class="form-control" name="padiastolica_ini" placeholder="Diastolica Inicial" aria-label="padiastolica_ini">
+                        <span class="input-group-text">mmHg</span>
                     </div>
                 </div>
-                <div class="col lg-3">
-                    <label for="pasistolica">Post Intubacion</label>
+                <div class="col col-lg-12">
+                    <label for="pasistolica_postint">Post Intubacion</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
+                        <input type="number" class="form-control" name="pasistolica_postint" placeholder="Sistolica Post Intubacion" aria-label="pasistolica_postint">
                         <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
+                        <input type="number" class="form-control" name="padiastolica_postint" placeholder="Diastolica Post Intubacion" aria-label="padiastolica_postint">
+                        <span class="input-group-text">mmHg</span>
                     </div>
                 </div>
-                <div class="col lg-3">
-                    <label for="pasistolica">Final</label>
+                <div class="col col-lg-12">
+                    <label class="text-bold" for="pasistolica_fin">Final</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
+                        <input type="number" class="form-control" name="pasistolica_fin" placeholder="Sistolica Final" aria-label="pasistolica_fin">
                         <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
+                        <input type="number" class="form-control" name="padiastolica_fin" placeholder="Diastolica Final" aria-label="padiastolica_fin">
+                        <span class="input-group-text">mmHg</span>
+
                     </div>
                 </div>
             </div>   
             <div class="col">
                 <div class="row">
                     <div class="text-primary">
-                        <p style="color:crimson">Frecuencia Cardiaca</p>
+                        <p style="color:crimson">Frecuencia Cardiaca (FC)</p>
                     </div>
                 </div>
                 <div class="col lg-3">
-                    <label for="pasistolica">Inicio</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
-                        <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
+                    <label class="" for="fcard_ini">Inicio</label>
+                    <div class=" input-group  mb-3">
+                        <input type="number" class="form-control" name="fcard_ini" placeholder="FC Inicial" aria-label="fcard_ini">
+                        <span class="input-group-text">lpm</span>
                     </div>
                 </div>
                 <div class="col lg-3">
-                    <label for="pasistolica">Post Intubacion</label>
+                    <label for="fcard_postint">Post Intubacion</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
-                        <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
-                    </div>
+                        <input type="number" class="form-control" name="fcard_postint" placeholder="FC Post Intubacion" aria-label="fcard_postint">
+                        <span class="input-group-text">lpm</span>
+                    </div>  
                 </div>
                 <div class="col lg-3">
-                    <label for="pasistolica">Final</label>
+                    <label for="fcard_fin">Final</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
-                        <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
+                        <input type="number" class="form-control" name="fcard_fin" placeholder="FC Final" aria-label="fcard_fin">
+                        <span class="input-group-text">lpm</span>
                     </div>
                 </div>
             </div>   
             <div class="col">
                 <div class="row">
                     <div class="text-primary">
-                        <p style="color:crimson">Saturacion O2</p>
+                        <p style="color:crimson">Saturación O2 (SatO2)</p>
                     </div>
                 </div>
                 <div class="col lg-3">
-                    <label for="pasistolica">Inicio</label>
+                    <label for="sato_ini">Inicio</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
-                        <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
+                        <input type="number" class="form-control" name="sato_ini" placeholder="SatO2 Inicial" aria-label="sato_ini">
+                        <span class="input-group-text">%</span>
                     </div>
                 </div>
                 <div class="col lg-3">
-                    <label for="pasistolica">Post Intubacion</label>
+                    <label for="sato_postint">Post Intubacion</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
-                        <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
+                        <input type="number" class="form-control" name="sato_postint" placeholder="SatO2 Post Intubacion" aria-label="sato_postint">
+                        <span class="input-group-text">%</span>
                     </div>
                 </div>
                 <div class="col lg-3">
-                    <label for="pasistolica">Final</label>
+                    <label for="sato_fin">Final</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="pasistolica" placeholder="sistolica" aria-label="sistolica">
-                        <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" name="padiastolica" placeholder="diastolica" aria-label="diastolica">
+                        <input type="number" class="form-control" name="sato_fin" placeholder="SatO2 Final" aria-label="sato_fin">
+                        <span class="input-group-text">%</span>
                     </div>
                 </div>
             </div>   
+        </div>
+        <div class="row mt-1">
+            <div class=" col col-lg-6">
+                <div class="form-floating">
+                    <input type="number" name="induccionPropofol" class="form-control" v-model="data.induccionPropofol">
+                    <label for="induccionPropofol">ETCO2 (mmHg)</label>
+                </div>
+            </div>
+            <div class=" col col-lg-6">
+                <div class="form-floating">
+                    <input type="number" name="induccionPropofol" class="form-control" v-model="data.induccionPropofol">
+                    <label for="induccionPropofol">BIS</label>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col lg-6">
