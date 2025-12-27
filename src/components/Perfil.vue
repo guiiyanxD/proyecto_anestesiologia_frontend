@@ -223,24 +223,58 @@
                 <h6 class="fw-bold mb-3 text-primary">
                   <i class="bi bi-syringe"></i> Fármacos de Inducción
                 </h6>
-                <dl class="row">
-                  <dt class="col-6">Propofol:</dt>
-                  <dd class="col-6">{{ userData.induccionpropofol }} mg</dd>
-
-                  <dt class="col-6">Dexmedetomidina:</dt>
-                  <dd class="col-6">
-                    {{ userData.inducciondexmedetomidina }} mcg
-                  </dd>
-
-                  <dt class="col-6">Lidocaína:</dt>
-                  <dd class="col-6">{{ userData.induccionlidocaina }} mg</dd>
-
-                  <dt class="col-6">Ketamina:</dt>
-                  <dd class="col-6">{{ userData.induccionketamina }} mg</dd>
-
-                  <dt class="col-6">RNM:</dt>
-                  <dd class="col-6">{{ userData.induccionrnm }} mg</dd>
-                </dl>
+                <div class="d-flex flex-wrap gap-2">
+                  <span
+                    :class="
+                      userData.induccionpropofol
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Propofol
+                  </span>
+                  <span
+                    :class="
+                      userData.inducciondexmedetomidina
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Dexmedetomidina
+                  </span>
+                  <span
+                    :class="
+                      userData.induccionlidocaina
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Lidocaína
+                  </span>
+                  <span
+                    :class="
+                      userData.induccionketamina
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Ketamina
+                  </span>
+                  <span
+                    :class="
+                      userData.induccionrnm
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    RNM
+                  </span>
+                </div>
               </div>
 
               <!-- MANTENIMIENTO -->
@@ -248,28 +282,58 @@
                 <h6 class="fw-bold mb-3 text-success">
                   <i class="bi bi-heart-pulse"></i> Fármacos de Mantenimiento
                 </h6>
-                <dl class="row">
-                  <dt class="col-6">Sevorane:</dt>
-                  <dd class="col-6">{{ userData.mantenimientosevorane }} mg</dd>
-
-                  <dt class="col-6">Dexmedetomidina:</dt>
-                  <dd class="col-6">
-                    {{ userData.mantenimientodexmedetomidina }} mcg
-                  </dd>
-
-                  <dt class="col-6">Lidocaína:</dt>
-                  <dd class="col-6">
-                    {{ userData.mantenimientolidocaina }} mg
-                  </dd>
-
-                  <dt class="col-6">Ketamina:</dt>
-                  <dd class="col-6">{{ userData.mantenimientoketamina }} mg</dd>
-
-                  <dt class="col-6">Sulfato de Mg:</dt>
-                  <dd class="col-6">
-                    {{ userData.mantenimientosulfatomg }} mg
-                  </dd>
-                </dl>
+                <div class="d-flex flex-wrap gap-2">
+                  <span
+                    :class="
+                      userData.mantenimientosevorane
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Sevorane
+                  </span>
+                  <span
+                    :class="
+                      userData.mantenimientodexmedetomidina
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Dexmedetomidina
+                  </span>
+                  <span
+                    :class="
+                      userData.mantenimientolidocaina
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Lidocaína
+                  </span>
+                  <span
+                    :class="
+                      userData.mantenimientoketamina
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Ketamina
+                  </span>
+                  <span
+                    :class="
+                      userData.mantenimientosulfatomg
+                        ? 'badge bg-success'
+                        : 'badge bg-secondary'
+                    "
+                    style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+                  >
+                    Sulfato de Mg
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -279,91 +343,46 @@
             <h6 class="fw-bold mb-3 text-warning">
               <i class="bi bi-capsule"></i> Coadyuvantes
             </h6>
-            <div class="row">
-              <div class="col-md-6">
-                <dl class="row">
-                  <dt class="col-6">Ondasetron:</dt>
-                  <dd class="col-6">
-                    <span
-                      :class="
-                        userData.ondasetron
-                          ? 'badge bg-success'
-                          : 'badge bg-secondary'
-                      "
-                    >
-                      {{ userData.ondasetron ? "Sí" : "No" }}
-                    </span>
-                    <span
-                      v-if="userData.ondasetron && userData.valorondasetron"
-                      class="ms-2"
-                    >
-                      {{ userData.valorondasetron }} mg
-                    </span>
-                  </dd>
-
-                  <dt class="col-6">Metamizol:</dt>
-                  <dd class="col-6">
-                    <span
-                      :class="
-                        userData.metamizol
-                          ? 'badge bg-success'
-                          : 'badge bg-secondary'
-                      "
-                    >
-                      {{ userData.metamizol ? "Sí" : "No" }}
-                    </span>
-                    <span
-                      v-if="userData.metamizol && userData.valormetamizol"
-                      class="ms-2"
-                    >
-                      {{ userData.valormetamizol }} mg
-                    </span>
-                  </dd>
-                </dl>
-              </div>
-
-              <div class="col-md-6">
-                <dl class="row">
-                  <dt class="col-6">Dexametasona:</dt>
-                  <dd class="col-6">
-                    <span
-                      :class="
-                        userData.dexametasona
-                          ? 'badge bg-success'
-                          : 'badge bg-secondary'
-                      "
-                    >
-                      {{ userData.dexametasona ? "Sí" : "No" }}
-                    </span>
-                    <span
-                      v-if="userData.dexametasona && userData.valordexametasona"
-                      class="ms-2"
-                    >
-                      {{ userData.valordexametasona }} mg
-                    </span>
-                  </dd>
-
-                  <dt class="col-6">Ketorol:</dt>
-                  <dd class="col-6">
-                    <span
-                      :class="
-                        userData.ketorol
-                          ? 'badge bg-success'
-                          : 'badge bg-secondary'
-                      "
-                    >
-                      {{ userData.ketorol ? "Sí" : "No" }}
-                    </span>
-                    <span
-                      v-if="userData.ketorol && userData.valorketorol"
-                      class="ms-2"
-                    >
-                      {{ userData.valorketorol }} mg
-                    </span>
-                  </dd>
-                </dl>
-              </div>
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span
+                :class="
+                  userData.ondasetron
+                    ? 'badge bg-success'
+                    : 'badge bg-secondary'
+                "
+                style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+              >
+                Ondasetron
+              </span>
+              <span
+                :class="
+                  userData.metamizol ? 'badge bg-success' : 'badge bg-secondary'
+                "
+                style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+              >
+                Metamizol
+              </span>
+              <span
+                :class="
+                  userData.dexametasona
+                    ? 'badge bg-success'
+                    : 'badge bg-secondary'
+                "
+                style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+              >
+                Dexametasona
+              </span>
+              <span
+                :class="
+                  userData.ketorol ? 'badge bg-success' : 'badge bg-secondary'
+                "
+                style="font-size: 0.9rem; padding: 0.5rem 0.75rem"
+              >
+                Ketorol
+              </span>
             </div>
+
+            <hr class="my-4" />
 
             <div class="mt-4">
               <div class="mt-4">
@@ -641,7 +660,7 @@ export default {
   name: "perfilComponent",
   components: {
     EditarDatosPersonales,
-    EditarDatosIntraOperatorios
+    EditarDatosIntraOperatorios,
   },
   data: () => ({
     userId: null,
@@ -748,20 +767,20 @@ export default {
       return "badge bg-danger";
     },
     handleDatosIntraOperatoriosUpdaIntraOperatorios() {
-        this.closeModalIntra();
-        this.fetchUserData();
-        
-        // Mostrar mensaje de éxito
-        alert('Datos intra operatorios actualizados correctamente');
+      this.closeModalIntra();
+      this.fetchUserData();
+
+      // Mostrar mensaje de éxito
+      alert("Datos intra operatorios actualizados correctamente");
     },
     closeModalIntra() {
-        // Cerrar el modal usando Bootstrap
+      // Cerrar el modal usando Bootstrap
       const modal = document.getElementById("modalEditarDatosIntraOperatorios");
       const bsModal = window.bootstrap.Modal.getInstance(modal);
       if (bsModal) {
         bsModal.hide();
       }
-    }
-  }
+    },
+  },
 };
 </script>
