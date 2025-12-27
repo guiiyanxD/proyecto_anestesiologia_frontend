@@ -30,6 +30,7 @@
                 placeholder="Sistolica Inicial"
                 aria-label="pasistolica_ini"
                 v-model="data.pasistolica_ini"
+                required
               />
               <span class="input-group-text">/</span>
               <input
@@ -39,6 +40,7 @@
                 placeholder="Diastolica Inicial"
                 aria-label="padiastolica_ini"
                 v-model="data.padiastolica_ini"
+                required
               />
               <span class="input-group-text">mmHg</span>
             </div>
@@ -53,6 +55,7 @@
                 placeholder="Sistolica Post Intubacion"
                 aria-label="pasistolica_postint"
                 v-model="data.pasistolica_postint"
+                required
               />
               <span class="input-group-text">/</span>
               <input
@@ -62,6 +65,7 @@
                 placeholder="Diastolica Post Intubacion"
                 aria-label="padiastolica_postint"
                 v-model="data.padiastolica_postint"
+                required
               />
               <span class="input-group-text">mmHg</span>
             </div>
@@ -76,6 +80,7 @@
                 placeholder="Sistolica Final"
                 aria-label="pasistolica_fin"
                 v-model="data.pasistolica_fin"
+                required
               />
               <span class="input-group-text">/</span>
               <input
@@ -85,6 +90,7 @@
                 placeholder="Diastolica Final"
                 aria-label="padiastolica_fin"
                 v-model="data.padiastolica_fin"
+                required
               />
               <span class="input-group-text">mmHg</span>
             </div>
@@ -106,6 +112,7 @@
                 placeholder="FC Inicial"
                 aria-label="fcard_ini"
                 v-model="data.fcard_ini"
+                required
               />
               <span class="input-group-text">lpm</span>
             </div>
@@ -120,6 +127,7 @@
                 placeholder="FC Post Intubacion"
                 aria-label="fcard_postint"
                 v-model="data.fcard_postint"
+                required
               />
               <span class="input-group-text">lpm</span>
             </div>
@@ -134,6 +142,7 @@
                 placeholder="FC Final"
                 aria-label="fcard_fin"
                 v-model="data.fcard_fin"
+                required
               />
               <span class="input-group-text">lpm</span>
             </div>
@@ -155,6 +164,7 @@
                 placeholder="SatO2 Inicial"
                 aria-label="sato_ini"
                 v-model="data.sato_ini"
+                required
               />
               <span class="input-group-text">%</span>
             </div>
@@ -169,6 +179,7 @@
                 placeholder="SatO2 Post Intubacion"
                 aria-label="sato_postint"
                 v-model="data.sato_postint"
+                required
               />
               <span class="input-group-text">%</span>
             </div>
@@ -183,6 +194,7 @@
                 placeholder="SatO2 Final"
                 aria-label="sato_fin"
                 v-model="data.sato_fin"
+                required
               />
               <span class="input-group-text">%</span>
             </div>
@@ -199,6 +211,7 @@
               name="etco2"
               class="form-control"
               v-model="data.etco2"
+              required
             />
             <span class="input-group-text">mmHg</span>
           </div>
@@ -214,6 +227,7 @@
               placeholder="1-100"
               class="form-control"
               v-model="data.bis"
+              required
             />
           </div>
         </div>
@@ -236,6 +250,7 @@
               name="despertar"
               class="form-control"
               v-model="data.despertar"
+              required
             />
             <span class="input-group-text"> min </span>
           </div>
@@ -248,6 +263,7 @@
               name="tiempoQx"
               class="form-control"
               v-model="data.tiempoQx"
+              required
             />
 
             <span class="input-group-text">min</span>
@@ -257,282 +273,293 @@
     </div>
 
     <!---DOSIS DE INDUCCIÓN --->
-    
+
     <div>
-        <div class="row mt-3 mb-1">
-            <div class="text-primary">
-                <h4>Farmacos de induccion</h4>
-            </div>
-        </div>  
-        <div class="row">
-            <div class="col-12 col-lg-6">
-            <div class="form-floating">
-                <input
-                type="number"
-                step="0.1"
-                name="induccionPropofol"
-                class="form-control"
-                v-model="data.induccionPropofol"
-                />
-                <label for="induccionPropofol">Propofol (mg)</label>
-            </div>
-            </div>
-            <div class="col-12 col-lg-6">
-            <div class="form-floating">
-                <input
-                type="number"
-                name="induccionDexmedetomidina"
-                class="form-control"
-                v-model="data.induccionDexmedetomidina"
-                />
-                <label for="induccionDexmedetomidina"
-                >Dexmedetomidina (mcg/kg)</label
-                >
-            </div>
-            </div>
+      <div class="row mt-3 mb-1">
+        <div class="text-primary">
+          <h4>Farmacos de induccion</h4>
         </div>
-        <div class="row mt-3">
-            <div class="col lg-6">
-            <div class="form-floating">
-                <input
-                type="number"
-                name="induccionLidocaina"
-                class="form-control"
-                v-model="data.induccionLidocaina"
-                />
-                <label for="induccionLidocaina">Lidocaina (mg/kg)</label>
-            </div>
-            </div>
-            <div class="col lg-6">
-            <div class="form-floating">
-                <input
-                type="number"
-                name="induccionKetamina"
-                class="form-control"
-                v-model="data.induccionKetamina"
-                />
-                <label for="induccionKetamina">Ketamina (mg/kg)</label>
-            </div>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-6 col-lg-6">
+          <label for="induccionPropofol">Propofol</label>
+
+          <div class="input-group">
+            <input
+              type="number"
+              step="0.1"
+              name="induccionPropofol"
+              class="form-control"
+              v-model="data.induccionPropofol"
+              required
+            />
+            <span class="input-group-text">mg</span>
+          </div>
         </div>
-        <div class="row mt-3">
-            <div class="col lg-12">
-            <div class="form-floating">
-                <input
-                type="number"
-                name="induccionKetamina"
-                class="form-control"
-                />
-                <label for="induccionKetamina">RNM</label>
-            </div>
-            </div>
+        <div class="col-6 col-lg-6">
+          <label for="induccionDexmedetomidina">Dexmedetomidina</label>
+          <div class="input-group">
+            <input
+              type="number"
+              step="0.1"
+              name="induccionDexmedetomidina"
+              class="form-control"
+              v-model="data.induccionDexmedetomidina"
+              required
+            />
+
+            <span class="input-group-text">mcg</span>
+          </div>
         </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-6 col-lg-6">
+          <label for="induccionLidocaina">Lidocaina</label>
+          <div class="input-group">
+            <input
+              type="number"
+              step="0.1"
+              name="induccionLidocaina"
+              placeholder="lidocaina"
+              class="form-control"
+              v-model="data.induccionLidocaina"
+              required
+            />
+            <span class="input-group-text">mg</span>
+          </div>
+        </div>
+        <div class="col-6 col-lg-6">
+          <label for="induccionKetamina">Ketamina</label>
+
+          <div class="input-group">
+            <input
+              type="number"
+              step="0.1"
+              name="induccionKetamina"
+              class="form-control"
+              v-model="data.induccionKetamina"
+              required
+            />
+
+            <span class="input-group-text">mg</span>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12 col-lg-12">
+          <label for="induccionRNM">RNM</label>
+
+          <div class="input-group">
+            <input
+              type="number"
+              step="0.1"
+              name="induccionRNM"
+              class="form-control"
+              v-model="data.induccionRNM"
+              required
+            />
+            <span class="input-group-text">mg</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!---DOSIS DE MANTENIMIENTO --->
-    <div class="row mt-3">
-      <div class="text-primary">
-        <h4>Farmacos de mantenimiento</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col lg-6">
-        <div class="form-floating">
-          <input
-            type="number"
-            name="mantenimientoSevorane"
-            class="form-control"
-            v-model="data.mantenimientoSevorane"
-          />
-          <label for="mantenimientoSevorane">Sevorane (mg)</label>
+    <div>
+      <div class="row mt-3">
+        <div class="text-primary">
+          <h4>Farmacos de mantenimiento</h4>
         </div>
       </div>
-      <div class="col lg-6">
-        <div class="form-floating">
-          <input
-            type="number"
-            name="mantenimientoDexmedetomidina"
-            class="form-control"
-            v-model="data.mantenimientoDexmedetomidina"
-          />
-          <label for="mantenimientoDexmedetomidina"
-            >Dexmedetomidina (mcg/kg)</label
-          >
+      <div class="row">
+        <div class="col lg-6">
+          <label for="mantenimientoSevorane">Sevorane</label>
+          <div class="input-group">
+            <input
+              type="number"
+              name="mantenimientoSevorane"
+              class="form-control"
+              v-model="data.mantenimientoSevorane"
+              required
+            />
+
+            <span class="input-group-text">mg</span>
+          </div>
+        </div>
+        <div class="col lg-6">
+          <label for="mantenimientoDexmedetomidina">Dexmedetomidina</label>
+          <div class="input-group">
+            <input
+              type="number"
+              name="mantenimientoDexmedetomidina"
+              class="form-control"
+              v-model="data.mantenimientoDexmedetomidina"
+              required
+            />
+            <span class="input-group-text">mcg</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col lg-6">
-        <div class="form-floating">
-          <input
-            type="number"
-            name="mantenimientoLidocaina"
-            class="form-control"
-            v-model="data.mantenimientoLidocaina"
-          />
-          <label for="mantenimientoLidocaina">Lidocaina (mg/kg)</label>
+      <div class="row mt-3">
+        <div class="col lg-6">
+          <label for="mantenimientoLidocaina">Lidocaina</label>
+
+          <div class="input-group">
+            <input
+              type="number"
+              name="mantenimientoLidocaina"
+              class="form-control"
+              v-model="data.mantenimientoLidocaina"
+              required
+            />
+
+            <span class="input-group-text">mg</span>
+          </div>
+        </div>
+        <div class="col lg-6">
+          <label for="mantenimientoKetamina">Ketamina</label>
+
+          <div class="input-group">
+            <input
+              type="number"
+              name="mantenimientoKetamina"
+              class="form-control"
+              v-model="data.mantenimientoKetamina"
+              required
+            />
+
+            <span class="input-group-text">mg</span>
+          </div>
         </div>
       </div>
-      <div class="col lg-6">
-        <div class="form-floating">
-          <input
-            type="number"
-            name="mantenimientoKetamina"
-            class="form-control"
-            v-model="data.mantenimientoKetamina"
-          />
-          <label for="mantenimientoKetamina">Ketamina (mg/kg)</label>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col col-lg-12">
-        <div class="form-floating">
-          <input
-            type="number"
-            name="mantenimientoSulfatoMg"
-            class="form-control"
-            v-model="data.mantenimientoSulfatoMg"
-          />
+      <div class="row mt-3">
+        <div class="col col-lg-12">
           <label for="mantenimientoSulfatoMg">Sulfato de Mg</label>
+
+          <div class="input-group">
+            <input
+              type="number"
+              name="mantenimientoSulfatoMg"
+              class="form-control"
+              v-model="data.mantenimientoSulfatoMg"
+              required
+            />
+
+            <span class="input-group-text">mg</span>
+          </div>
         </div>
       </div>
     </div>
 
     <!--- EVENTOS INTRA OPERATORIOS --->
-    <div class="row mt-3">
-      <div class="text-primary">
-        <h4>Coadyuvantes</h4>
-      </div>
-    </div>
-    <div class="col lg-12">
-      <div class="row">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="checkPresionArterial"
-            v-model="data.presionArterial"
-            value="1"
-          />
-          <label class="form-check-label" for="checkPresionArterial">
-            Presion arterial (PA)
-          </label>
-          <div
-            v-if="this.data.presionArterial === true"
-            class="form-floating mt-2"
-          >
-            <input
-              type="text"
-              name="valorPresionArterial"
-              class="form-control"
-              v-model="data.valorPresionArterial"
-              placeholder="Valor de PA"
-            />
-            <label for="valorPresionArterial">Valor presion arterial</label>
-          </div>
+    <div>
+      <div class="row mt-3">
+        <div class="text-primary">
+          <h4>Coadyuvantes</h4>
         </div>
       </div>
+      <div class="col lg-12">
+        <div class="row">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="checkOnddasetron"
+              v-model="data.ondasetron"
+              value="1"
+            />
+            <label class="form-check-label" for="checkOnddasetron">
+              Ondasetron
+            </label>
+            <div v-if="this.data.ondasetron === true" class="input-group mt-2">
+              <input
+                type="number"
+                name="valorOndasetron"
+                step="0.1"
+                class="form-control"
+                v-model="data.valorOndasetron"
+                placeholder="Dosis Ondasetron"
+              />
+              <span class="input-group-text">mg</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="row">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value="1"
-            id="checkFrecuenciaCardiaca"
-            v-model="data.frecuenciaCardiaca"
-          />
-          <label class="form-check-label" for="checkFrecuenciaCardiaca">
-            Frecuencia cardiaca (FC)
-          </label>
-          <div
-            v-if="this.data.frecuenciaCardiaca === true"
-            class="form-floating mt-2"
-          >
+        <div class="row">
+          <div class="form-check">
             <input
-              type="text"
-              name="valorFrecuenciaCardiaca"
-              class="form-control"
-              v-model="data.valorFrecuenciaCardiaca"
-              placeholder="Valor de FC"
+              class="form-check-input"
+              type="checkbox"
+              value="1"
+              id="checkmetamizol"
+              v-model="data.metamizol"
             />
-            <label for="valorFrecuenciaCardiaca"
-              >Valor frecuencia cardiaca</label
+            <label class="form-check-label" for="checkmetamizol">
+              Metamizol
+            </label>
+            <div v-if="this.data.metamizol === true" class="input-group mt-2">
+              <input
+                type="number"
+                name="valorMetamizol"
+                step="0.1"
+                class="form-control"
+                v-model="data.valorMetamizol"
+                placeholder="Dosis Metamizol"
+              />
+              <span class="input-group-text">mg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="1"
+              id="checkDexametasona"
+              v-model="data.dexametasona"
+            />
+            <label class="form-check-label" for="checkDexametasona">
+              Dexametasona
+            </label>
+            <div
+              v-if="this.data.dexametasona === true"
+              class="input-group mt-2"
             >
+              <input
+                type="text"
+                name="valorDexametasona"
+                class="form-control"
+                v-model="data.valorDexametasona"
+                placeholder="Valor de Dexametasona"
+              />
+              <span class="input-group-text">mg</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value="1"
-            id="checkCo2"
-            v-model="data.co2"
-          />
-          <label class="form-check-label" for="checkCo2"> Co2 </label>
-          <div v-if="this.data.co2 === true" class="form-floating mt-2">
+
+        <div class="row">
+          <div class="form-check">
             <input
-              type="text"
-              name="valorCo2"
-              class="form-control"
-              v-model="data.valorCo2"
-              placeholder="Valor de Co2"
+              class="form-check-input"
+              type="checkbox"
+              value="1"
+              id="checkKetorol"
+              v-model="data.ketorol"
             />
-            <label for="valorCo2">Valor Co2</label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value="1"
-            id="checkSatO2"
-            v-model="data.satO2"
-          />
-          <label class="form-check-label" for="checkSatO2">
-            Saturacion O2
-          </label>
-          <div v-if="this.data.satO2 === true" class="form-floating mt-2">
-            <input
-              type="text"
-              name="valorSatO2"
-              class="form-control"
-              v-model="data.valorSatO2"
-              placeholder="Valor de Saturacion O2"
-            />
-            <label for="valorSatO2">Valor Saturacion O2</label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            value="1"
-            id="checkFR"
-            v-model="data.frecuenciaRespiratoria"
-          />
-          <label class="form-check-label" for="checkFR">
-            Frecuencia respiratoria (FR)
-          </label>
-          <div
-            v-if="this.data.frecuenciaRespiratoria === true"
-            class="form-floating mt-2"
-          >
-            <input
-              type="text"
-              name="valorFR"
-              class="form-control"
-              v-model="data.valorFrecuenciaRespiratoria"
-              placeholder="Valor de FR"
-            />
-            <label for="valorFR">Valor frecuencia respiratoria</label>
+            <label class="form-check-label" for="checkKetorol"> Ketorol </label>
+            <div v-if="this.data.ketorol === true" class="input-group mt-2">
+              <input
+                type="number"
+                step="0.1"
+                name="valorKetorol"
+                class="form-control"
+                v-model="data.valorKetorol"
+                placeholder="Valor de Ketorol"
+              />
+              <span class="input-group-text">mg</span>
+            </div>
           </div>
         </div>
       </div>
@@ -566,27 +593,6 @@ export default {
   data: () => ({
     data: {
       userId: "",
-      /*induccionPropofol: 0,
-                induccionDexmedetomidina: 0,
-                induccionLidocaina: 0,
-                induccionKetamina: 0,
-                mantenimientoPropofol: 0,
-                mantenimientoDexmedetomidina: 0,
-                mantenimientoLidocaina: 0,
-                mantenimientoKetamina: 0,
-                despertar: 0,
-                tiempoQx: 0,
-                presionArterial: false,
-                valorPresionArterial: "",
-                frecuenciaCardiaca: false,
-                valorFrecuenciaCardiaca: "",
-                frecuenciaRespiratoria: false,
-                valorFrecuenciaRespiratoria: "",
-                co2: false,
-                valorCo2: "",
-                satO2: false,
-                valorSatO2: "",
-                etco2:"",*/
     },
     isLoading: false,
   }),
